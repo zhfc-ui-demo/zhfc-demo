@@ -1,0 +1,133 @@
+<template>
+  <div>
+    <el-button @click="onPreview">预览</el-button>
+    <zhfc-dialog-img
+      title="哈哈哈哈"
+      :dialogVisibleImg.sync="dialogVisibleImg"
+      :url-list="info"
+      @download="download"
+      @removeImg="removeImg"
+    >
+      <el-form ref="queryForm" :inline="true" :model="queryForm">
+        <el-form-item label="类型">
+          <el-select
+            class="zhfc-select"
+            v-model="queryForm.qy"
+            placeholder="请选择区域"
+            style="width: 260px"
+            clearable
+          >
+            <el-option
+              v-for="item in regions"
+              :key="item.value"
+              :label="item.name"
+              :value="item.value"
+            />
+          </el-select>
+        </el-form-item>
+        <el-form-item label="文件名称">
+          <el-select
+            class="zhfc-select"
+            v-model="queryForm.zt"
+            placeholder="请选择状态"
+            style="width: 260px"
+            clearable
+          >
+            <el-option
+              v-for="item in status"
+              :key="item.value"
+              :label="item.name"
+              :value="item.value"
+            />
+          </el-select>
+        </el-form-item>
+      </el-form>
+    </zhfc-dialog-img>
+  </div>
+</template>
+<script>
+// 导入组件
+import test1 from "../../assets/test/test1.jpg";
+import test2 from "../../assets/test/test2.jpg";
+import test3 from "../../assets/logo.png";
+
+export default {
+  name: "demo11",
+  data() {
+    return {
+      queryForm: {
+        qy: "",
+        zt: "",
+        mc: "",
+      },
+      regions: [
+        { name: "福田区", value: "1" },
+        { name: "南山区", value: "2" },
+      ],
+      status: [
+        { name: "在办", value: "1" },
+        { name: "已完成", value: "2" },
+      ],
+      isActive: false,
+      dialogVisibleImg: false,
+      info: [
+        {
+          url: test1,
+          infoType: "身份证明",
+          cardType: "身份证",
+          cardID: "1234567890",
+          name: "张三",
+          gender: "女",
+          nation: "汉",
+          brith: "1990-0-0",
+          address: "深圳",
+          gov: "公安局",
+          expData: "2020-0-0",
+        },
+        {
+          url: test2,
+          infoType: "身份证明",
+          cardType: "身份证",
+          cardID: "1234567890",
+          name: "小米",
+          gender: "男",
+          nation: "汉",
+          brith: "1992-0-0",
+          address: "深圳",
+          gov: "公安局",
+          expData: "2020-0-0",
+        },
+        {
+          url: test3,
+          infoType: "身份证明",
+          cardType: "身份证",
+          cardID: "1234567890",
+          name: "小四",
+          gender: "男",
+          nation: "汉",
+          brith: "1992-0-0",
+          address: "深圳",
+          gov: "公安局",
+          expData: "2020-0-0",
+        },
+      ],
+    };
+  },
+  methods: {
+    confirm() {},
+    onPreview() {
+      this.dialogVisibleImg = true;
+    },
+    download(val) {
+      console.log(val);
+    },
+    removeImg(val) {
+      console.log(val);
+    },
+  },
+  mounted() {},
+};
+</script>
+
+<style lang="scss">
+</style>

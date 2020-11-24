@@ -1,0 +1,35 @@
+import request from '@/utils/request'
+export function getdepTree(query) { // get
+  return request({
+    url: 'listAllOrg.do',
+    method: 'get',
+    params: query
+  })
+}
+
+export function post(data) { // post
+  return request({
+    url: 'listPageAllUser.do',
+    method: 'get',
+    data: data
+  })
+}
+export function postQuery(data) { // post-query
+  return request({
+    url: 'editUserAc.do',
+    method: 'post',
+    params: data
+  })
+}
+
+export function set(data) { // 设置额外的个性化配置
+  return request({
+    url: 'olistUserAc.do',
+    method: 'post',
+    data,
+    responseType: 'blob',
+    headers:{
+      'Content-Type':'multipart/form-data'
+    }
+  })
+}

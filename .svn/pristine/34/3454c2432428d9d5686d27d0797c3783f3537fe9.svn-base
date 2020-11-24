@@ -1,0 +1,37 @@
+<template>
+  <div class="panel-indicator-container">
+    <div
+      class="indicator-item"
+      v-for="item in items"
+      :key="item.name"
+      @click="scrollIntoView(item)"
+      :class="{'selected':item.selected}"
+    >
+      <div class="indicator-tail"></div>
+      <div class="indicator-node">
+        <div class="indicator-node-inner" />
+      </div>
+      <div class="indicator-content">{{item.label}}</div>
+    </div>
+  </div>
+</template>
+
+<script>
+
+// 滚动容器位置指示器
+export default {
+  name: "Indicator",
+  inject: ["scrollPanel"],
+  computed: {
+    items() {
+      return this.scrollPanel.panelItems;
+    }
+  },
+  methods: {
+    // 滚动面板到视图
+    scrollIntoView(item) {
+      this.scrollPanel.scrollIntoView(item.name);
+    }
+  }
+};
+</script>

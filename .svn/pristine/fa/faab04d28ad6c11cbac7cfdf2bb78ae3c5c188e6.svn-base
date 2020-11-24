@@ -1,0 +1,32 @@
+.zhfc-search_form.position_form.el-form {
+    position: relative;
+    padding-right: 300px;
+    overflow: hidden;
+}
+
+.zhfc-search_form.el-form {
+    overflow: hidden;
+    .el-form-item {
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+
+    .el-form-item .el-form-item__content>.el-select,
+    .el-form-item .el-form-item__content>.el-input {
+        width: 240px !important;
+    }
+
+    .rightButton {
+        margin-right: 30px;
+        float: right;
+        .el-form-item {
+            margin-right: 0;
+        }
+    }
+
+    .position_btn {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+}

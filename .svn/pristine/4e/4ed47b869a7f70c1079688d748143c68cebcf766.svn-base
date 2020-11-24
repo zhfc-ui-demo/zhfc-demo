@@ -1,0 +1,76 @@
+
+<template>
+  <div class="upload" :style="{width:width}">
+     <div class="upload-main">
+         <div class="uplaodimg">
+            <el-upload :on-change="upload" action="#" :auto-upload="false" :accept='accept' :show-file-list="false">
+                <div slot="default" class="btn-icon">
+                    <i  class="el-icon-circle-plus upload-img-icon"></i>
+                    <p>点击添加项目总平图</p>
+                </div>
+                <img v-if="file" :src="file" class="avatar">
+            </el-upload>
+        </div>
+        <div>
+            <el-button type="primary" round @clik="uploadSure"> 提交</el-button>
+        </div>
+     </div>
+         <el-alert
+            title="请上传20MB以内的，jpg、png、jpeg、bmp、tif格式的图片作为项目总平图"
+            type="warning"
+             :closable="false"
+            show-icon>
+        </el-alert>
+  </div>
+</template>
+
+<script>
+export default {
+    name:'zhfcUploadImg',
+  components: {},
+  props: {
+    width: {
+        type:[Number,String],
+        default:'100%'
+    },
+    accept:{
+      type:String,
+      default:".jpg,.jpeg,.png,.JPG,.JPEG,.PNG" 
+    }
+  },
+  data() {
+    return {
+      file:'',
+      formData:null,
+      file:'',
+      fileData:''
+    };
+  },
+  watch: {},
+  mounted() {
+    this.formData = new FormData();
+  },
+  methods: {
+// 将图片文件转成BASE64格式
+    html5Reader(file){
+        const reader = new FileReader()
+        reader.onload = (e) => {
+            this.file=e.target.result
+        }
+        reader.readAsDataURL(file)
+    },
+    upload(file){//文件
+        this.formData.append("file", file.raw);
+        this.fileData=file
+        this.html5Reader(file.raw)
+    },
+    uploadSure() {
+      if(!this.formData){
+        this.$message.error('请先上传文件');
+        return false
+      }
+      this.$emit("upload", this.formData,this.fileData);
+    }
+  }
+};
+</script>

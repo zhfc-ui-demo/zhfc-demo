@@ -1,0 +1,144 @@
+.zhfc-upload_out {
+    box-sizing: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.0784313725490196);
+}
+
+.upload-header {
+    height: 48px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    box-sizing: border-box;
+    line-height: 48px;
+    padding-left: 30px;
+    font-size: 16px;
+    font-weight: 500;
+    color: $primary-text-color;
+}
+
+.btn {
+    height: 76px;
+    line-height: 76px;
+    z-index: 3000;
+    &::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    >span {
+        float: right;
+        padding-right: 30px;
+    }
+}
+
+.upload-main {
+    // height: 515px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    overflow-y: auto;
+    padding: 30px;
+    box-sizing: border-box;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+
+
+    .uplaodimg {
+        width: 100%;
+        color: $gray-color;
+    }
+
+    .el-upload {
+        width: 100%;
+        height: 140px;
+
+        .el-upload-dragger {
+            width: 100%;
+            height: 100%;
+        }
+
+        .btn-icon {
+            height: 100%;
+            padding-top: 45px;
+
+            p {
+                font-size: 12px;
+            }
+        }
+    }
+
+    .upload-img-icon {
+        font-size: 100px;
+    }
+
+    .avatar {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        ;
+    }
+
+    .el-upload-list.el-upload-list--picture {
+        display: flex;
+        flex-wrap: wrap;
+        .el-upload-list__item,
+        .el-upload-list__item .is-ready {
+
+            position: relative;
+            width: 176px;
+            margin-right: 10px;
+            border-radius: 0;
+
+            &:nth-child(4n) {
+                margin-right: 0;
+            }
+
+            img {
+                width: 100%;
+            }
+            .el-upload-list__item-name {
+                width: 100%;
+                position: absolute;
+                line-height: 30px;
+                background: rgba(0, 0, 0, 0.4);
+                color: #ffffff;
+                box-sizing: border-box;
+                padding: 0 30px 0 12px;
+                text-align: left;
+                font-size: 12px;
+                margin: 0;
+                left: 0;
+                bottom: 0;
+                z-index: 2000;
+
+                .el-icon-document::before {
+                    display: none;
+                }
+                .el-icon-close-tip {
+                    display: none !important;
+                }
+                .el-upload-list__item-thumbnail {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    .el-upload-list__item .el-icon-close {
+        display: block;
+        top: 68px;
+        width: 16px;
+        height: 16px;
+        cursor: pointer;
+        color: #606266;
+        opacity: .85;
+        background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAwElEQVQ4T92TvQ3CQAxG3yeBoGUCxAQ09JABmIOZmIMBAj0NEyAmoAUFydFJl+jiJEoQHVf5fPY7/4ofj7r8zWwBzN3bS9LT2/cBCuDmjNeSpmMBJqkBN7OWLsBqIzPLY9gTYAM83G9L4Ap8gJBO5gE7IEAOwCyFR5ABb+AIZJLODUC4pGGa2VbSJepTuZFKb54OVjv5Wvw5IK9aFVqcyOOK2Lcig0UETgP7tU+n1HdhBbTm3QELSfdK17lM32x4CVvHlBHSZdi0AAAAAElFTkSuQmCC) no-repeat center;
+        z-index: 2001;
+
+        &::before {
+            display: none;
+            content: '';
+        }
+    }
+
+}

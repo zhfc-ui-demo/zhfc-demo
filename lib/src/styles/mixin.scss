@@ -1,0 +1,13 @@
+@mixin zhfc-input-inner {
+    .el-input__inner {
+        border-radius: 2px;
+    }
+
+    &.el-input--mini .el-input__inner {
+        border-radius: 2px;
+    }
+
+    &.el-input--small .el-input__inner {
+        border-radius: 2px;
+    }
+}

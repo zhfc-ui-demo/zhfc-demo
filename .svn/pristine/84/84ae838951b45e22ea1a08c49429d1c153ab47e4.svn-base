@@ -1,0 +1,6 @@
+.zhfc-input.el-input {
+    @include zhfc-input-inner;
+}
+.zhfc-form .el-input {
+    @include zhfc-input-inner;
+}

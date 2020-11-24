@@ -1,0 +1,30 @@
+.zhfc-dialog-head {
+
+    background: rgba(0, 0, 0, 0.3);
+
+    .el-dialog {
+        .el-dialog__header {
+            box-sizing: border-box;
+            padding: 16px 30px;
+            border-bottom: 1px solid #ddd;
+
+            .el-dialog__headerbtn {
+                right: 30px;
+            }
+        }
+
+        .el-dialog__body {
+            padding: 36px 80px;
+        }
+
+        .el-dialog__footer {
+            height: 76px;
+            padding: 0 30px;
+            box-sizing: border-box;
+            border-top: 1px solid rgba(0, 0, 0, 0.06);
+            .dialog-footer {
+                line-height: 76px;
+            }
+        }
+    }
+}

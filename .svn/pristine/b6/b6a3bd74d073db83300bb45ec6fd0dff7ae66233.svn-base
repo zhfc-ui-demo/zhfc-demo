@@ -1,0 +1,6 @@
+.zhfc-dialog-head{
+    .el-dialog{
+     .el-dialog__header{border-bottom:1px solid #ddd}
+     .el-dialog__body{padding: 0;}
+    }
+}

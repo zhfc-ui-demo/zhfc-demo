@@ -1,0 +1,108 @@
+<template>
+  <div :class="{'hidden':hidden}">
+    <el-pagination
+      class="zhfc-pagination"
+      :background="background"
+      :current-page.sync="currentPage"
+      :page-size.sync="pageSize"
+      :layout="layout"
+      :page-sizes="pageSizes"
+      :total="total"
+      v-bind="$attrs"
+      @size-change="handleSizeChange"
+      @current-change="handleCurrentChange"
+    >
+      <slot v-show="total">
+        <div class="zhfc-total">
+          <span>当前显示1-{{limit}}条，</span>
+          <span>共{{total}}条</span>
+        </div>
+      </slot>
+    </el-pagination>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "Pagination",
+  props: {
+    total: {
+      required: true,
+      type: Number,
+    },
+    page: {
+      type: Number,
+      default: 1,
+    },
+    limit: {
+      type: Number,
+      default: 20,
+    },
+    pageSizes: {
+      type: Array,
+      default() {
+        return [10, 20, 30, 50];
+      },
+    },
+    layout: {
+      type: String,
+      default: "slot,prev, pager, next, jumper, sizes",
+    },
+    background: {
+      type: Boolean,
+      default: false,
+    },
+    autoScroll: {
+      type: Boolean,
+      default: true,
+    },
+    hidden: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  computed: {
+    currentPage: {
+      get() {
+        return this.page;
+      },
+      set(val) {
+        this.$emit("update:page", val);
+      },
+    },
+    pageSize: {
+      get() {
+        return this.limit;
+      },
+      set(val) {
+        this.$emit("update:limit", val);
+      },
+    },
+  },
+  methods: {
+    handleSizeChange(val) {
+      this.$emit("pagination", { page: this.currentPage, limit: val });
+    },
+    handleCurrentChange(val) {
+      this.$emit("pagination", { page: val, limit: this.pageSize });
+    },
+  },
+};
+</script>
+
+<style scoped>
+.pagination-container.hidden {
+  display: none;
+}
+.zhfc-pagination {
+  position: relative;
+}
+.zhfc-total {
+  position: absolute;
+  left: 5px;
+  font-size: 13px;
+  color: #474747;
+  
+font-weight: 400;
+}
+</style>

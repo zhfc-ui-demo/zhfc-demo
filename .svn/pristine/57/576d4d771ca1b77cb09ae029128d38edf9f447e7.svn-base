@@ -1,0 +1,44 @@
+<template>
+  <div :class="['sub-panel-item-container',`level-${level}`]">
+    <div :class="['sub-panel-header',line?'line':'']">
+      <h5 class="sub-panel-title">{{title}}</h5>
+      <div class="sub-panel-buttons">
+        <slot name="buttons" />
+      </div>
+    </div>
+    <div class="sub-panel-content">
+      <slot />
+    </div>
+  </div>
+</template>
+
+<script>
+// 二级和三级面板
+export default {
+  name: "SubPanelItem",
+  props: {
+    // 面板标题
+    title: String,
+    line:{
+      type:Boolean,
+      default:false,
+    }
+  },
+  data() {
+    return {
+      level: 2
+    };
+  },
+  mounted() {
+    this.getLevel();
+  },
+  methods: {
+    getLevel() {
+      const parent = this.$parent;
+      if (parent && parent.$options.name === this.$options.name) {
+        this.level = parent.level + 1;
+      }
+    }
+  }
+};
+</script>

@@ -1,0 +1,7 @@
+.zhfc-select.el-select {
+    @include zhfc-input-inner;
+}
+.zhfc-form .el-select {
+    @include zhfc-input-inner;
+}
+

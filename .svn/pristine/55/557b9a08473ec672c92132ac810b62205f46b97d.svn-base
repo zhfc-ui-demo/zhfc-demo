@@ -1,0 +1,32 @@
+@mixin zhfc-page {
+    .el-pager {
+        font-weight: normal;
+        
+        li {
+            padding: 0;
+            min-width: 24px;
+            border-radius: 2px;
+            margin: 0 2px;
+
+            &.active {
+                color: $light-text-color;
+                background-color: #f2f6fa;
+            }
+        }
+    }
+
+    .el-input {
+        @include zhfc-input-inner;
+    }
+
+    .el-pagination__sizes {
+        margin-left: 10px;
+    }
+}
+.zhfc-pagination.el-pagination {
+    @include zhfc-page;
+}
+.zhfc-pagination .el-pagination {
+    @include zhfc-page;
+}
+

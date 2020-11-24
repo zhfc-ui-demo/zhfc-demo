@@ -1,0 +1,12 @@
+.upload-main{width: 100%;height: 646px;background: #F1F5F7;text-align: center;position: relative;margin-bottom:10px;
+    .uplaodimg{
+        width: 100%;height: 560px;margin-bottom: 20px;position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: $gray-color;
+        position: relative;
+    }
+    .upload-img-icon{font-size: 100px;}
+    .avatar{width: 100%;height: 100%;position: absolute;left: 0;top: 0;;}
+}

@@ -1,0 +1,200 @@
+<template>
+  <div class="home-wrap">
+    
+    <main-panel>
+      <div slot="header" class="header-section">
+        <div class="query-wrap">
+          <el-form ref="queryForm" :inline="true" :model="queryForm">
+            <el-form-item>
+              <el-select
+                class="zhfc-select"
+                v-model="queryForm.qy"
+                placeholder="请选择区域"
+                style="width:120px"
+                clearable
+              >
+                <el-option
+                  v-for="item in regions"
+                  :key="item.value"
+                  :label="item.name"
+                  :value="item.value"
+                />
+              </el-select>
+            </el-form-item>
+            <el-form-item>
+              <el-select
+                class="zhfc-select"
+                v-model="queryForm.zt"
+                placeholder="请选择状态"
+                style="width:120px"
+                clearable
+              >
+                <el-option
+                  v-for="item in status"
+                  :key="item.value"
+                  :label="item.name"
+                  :value="item.value"
+                />
+              </el-select>
+            </el-form-item>
+            <el-form-item>
+              <el-input
+                class="zhfc-input"
+                suffix-icon="zhfc-icon-search"
+                v-model="queryForm.mc"
+                placeholder="可通过开发企业名称、项目名称、坐落搜索项目"
+                style="width: 350px"
+                clearable
+              ></el-input>
+            </el-form-item>
+            <el-form-item>
+              <el-button class="zhfc-button primary" icon="el-icon-search" @click="search">搜索</el-button>
+              <el-button class="zhfc-button plain" icon="el-icon-refresh-right" @click="reset">重置</el-button>
+            </el-form-item>
+          </el-form>
+        </div>
+        <div class="action-wrap">
+          <div class="left-action">
+            <el-button class="zhfc-button primary" icon="el-icon-circle-check">受理</el-button>
+            <el-button class="zhfc-button primary" icon="el-icon-circle-plus-outline">新增</el-button>
+          </div>
+          <div class="right-action">
+            <el-button class="zhfc-button primary" icon="el-icon-edit-outline">修改模块名称</el-button>
+            <el-button class="zhfc-button danger" icon="el-icon-delete">批量删除</el-button>
+            <el-button class="zhfc-button plain" icon="el-icon-time">历史记录</el-button>
+          </div>
+        </div>
+      </div>
+      <div class="content-section">
+        <el-table
+          class="zhfc-table"
+          v-loading="loading"
+          ref="table"
+          height="100%"
+          :data="tableData"
+       
+        >
+          <el-table-column type="selection" width="80" align="left"></el-table-column>
+          <el-table-column label="业务编号" width="120" prop="ywbh" align="left" />
+          <el-table-column label="项目编号" width="120" prop="xmbh" align="left" />
+          <el-table-column label="项目名称" prop="xmmc" align="left" />
+          <el-table-column label="开发企业名称" prop="kfqymc" align="left" />
+          <el-table-column label="区域" width="120" prop="qy" align="left" />
+          <el-table-column label="坐落" width="200" prop="zl" align="left" />
+          <el-table-column label="楼栋数量" sortable width="120" prop="ldsl" align="left" />
+          <el-table-column label="房屋数量" width="120" prop="fwsl" align="left" />
+          <el-table-column label="状态" width="120" prop="zt" align="left" />
+          <el-table-column label="操作" width="210" fixed="right" align="left">
+            <template slot-scope="scope">
+              <el-button class="zhfc-button text" @click="handleClick(scope.row)" size="small">查看</el-button>
+              <el-button
+                class="zhfc-button danger-text"
+                @click="delClick(scope.row)"
+                size="small"
+              
+              >删除</el-button>
+              <el-dropdown size="small" trigger="click" placement="bottom">
+                <el-button class="zhfc-button text" size="small">更多...</el-button>
+                <el-dropdown-menu slot="dropdown">
+                  <el-dropdown-item @click.native="handleClick(scope.row)">
+                    <span>审核</span>
+                  </el-dropdown-item>
+                  <el-dropdown-item @click.native="handleClick(scope.row)">
+                    <span>提交备案</span>
+                  </el-dropdown-item>
+                </el-dropdown-menu>
+              </el-dropdown>
+            </template>
+          </el-table-column>
+        </el-table>
+      </div>
+      <div slot="footer" class="footer-section">
+        <zhfc-pagination
+          v-show="totalCount>0"
+          :total="totalCount"
+          :page-sizes="pageSizes"
+          :page.sync="currentIndex"
+          :limit.sync="limit"
+          @pagination="getPagedData"
+        ></zhfc-pagination>
+      </div>
+    </main-panel>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "Dashboard",
+  data() {
+    return {
+      queryForm: {
+        qy: "",
+        zt: "",
+        mc: "",
+      },
+      regions: [
+        { name: "福田区", value: "1" },
+        { name: "南山区", value: "2" },
+      ],
+      status: [
+        { name: "在办", value: "1" },
+        { name: "已完成", value: "2" },
+      ],
+      loading: false,
+      totalCount: 0,
+      currentIndex: 1,
+      limit: 10,
+      pageSizes: [10, 20, 30, 50],
+      tableData: [],
+    };
+  },
+  mounted() {
+    this.search();
+  },
+  methods: {
+    async search() {
+      const data = await this.getPagedData(1);
+      this.totalCount = data.totalCount;
+      this.currentIndex = 1;
+    },
+    getPagedData(pageNo = 1) {
+      this.loading = true;
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          const result = Array.from({ length: 10 }).map((m, index) => ({
+            id: (pageNo - 1) * 10 + index,
+            ywbh: `业务编号${index}`,
+            xmbh: `项目编号${index}`,
+            xmmc: `项目名称${index}`,
+            kfqymc: `开发企业名称${index}`,
+            qy: `区域${index}`,
+            zl: `坐落${index}`,
+            ldsl: `楼栋数量${index}`,
+            fwsl: `房屋数量${index}`,
+            zt: `状态${index}`,
+          }));
+
+          this.tableData = result;
+          this.loading = false;
+
+          resolve({
+            totalCount: 20,
+            result,
+          });
+        }, 1000);
+      });
+    },
+    reset() {
+      this.queryForm.qy = "";
+      this.queryForm.zt = "";
+      this.queryForm.mc = "";
+    },
+    handleClick() {},
+  },
+};
+</script>
+
+<style lang="scss">
+.dashboard-wrap {
+}
+</style>

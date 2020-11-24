@@ -1,0 +1,6 @@
+.el-tooltip__popper {
+    padding: 8px 10px;
+    background: rgba(0, 0, 0, 0.65);
+    
+box-shadow: 0px 9px 28px rgba(0, 0, 0, 0.05);
+}

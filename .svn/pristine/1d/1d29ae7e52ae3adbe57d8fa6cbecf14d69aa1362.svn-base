@@ -1,0 +1,248 @@
+<template>
+  <main-panel>
+    <div slot="header" class="header-section">
+      <div class="query-wrap">
+        <el-form
+          :inline="true"
+          :model="ruleForm"
+          :rules="rules"
+          ref="ruleForm"
+          label-width="96px"
+          class="demo-ruleForm"
+        >
+          <el-row ref="zhfcrow">
+            <el-col :sm="8" :md="8" :lg="6">
+              <el-form-item label="活动名称1" prop="name">
+                <el-input
+                  class="zhfc-input"
+                  v-model="ruleForm.name"
+                ></el-input> </el-form-item
+            ></el-col>
+            <el-col :sm="8" :md="8" :lg="6">
+              <el-form-item label="活动名称2" prop="name">
+                <el-input
+                  class="zhfc-input"
+                  v-model="ruleForm.name"
+                ></el-input> </el-form-item
+            ></el-col>
+            <el-col
+              :sm="8"
+              :md="8"
+              :lg="6"
+              :class="{ 'hidden-md-and-down': isActive }"
+            >
+              <el-form-item label="活动名称3" prop="name">
+                <el-input
+                  class="zhfc-input"
+                  v-model="ruleForm.name"
+                ></el-input> </el-form-item
+            ></el-col>
+            <el-col
+              :sm="8"
+              :md="8"
+              :lg="6"
+              :class="{
+                'hidden-md-and-up': isActive,
+                'hidden-md-and-down': isActive,
+              }"
+            >
+              <el-form-item label="活动区域11" prop="region">
+                <el-select
+                  class="zhfc-select"
+                  v-model="ruleForm.region"
+                  placeholder="请选择活动区域"
+                >
+                  <el-option label="区域一" value="shanghai"></el-option>
+                  <el-option label="区域二" value="beijing"></el-option>
+                </el-select> </el-form-item
+            ></el-col>
+            <el-col
+              :sm="8"
+              :md="8"
+              :lg="6"
+              :class="{
+                'hidden-md-and-up': isActive,
+                'hidden-md-and-down': isActive,
+              }"
+            >
+              <el-form-item label="活动区域22" prop="region">
+                <el-select
+                  class="zhfc-select"
+                  v-model="ruleForm.region"
+                  placeholder="请选择活动区域"
+                >
+                  <el-option label="区域一" value="shanghai"></el-option>
+                  <el-option label="区域二" value="beijing"></el-option>
+                </el-select> </el-form-item
+            ></el-col>
+            <el-col
+              :sm="8"
+              :md="8"
+              :lg="6"
+              :class="{
+                'hidden-md-and-up': isActive,
+                'hidden-md-and-down': isActive,
+              }"
+            >
+              <el-form-item label="活动区域33" prop="region">
+                <el-select
+                  class="zhfc-select"
+                  v-model="ruleForm.region"
+                  placeholder="请选择活动区域"
+                >
+                  <el-option label="区域一" value="shanghai"></el-option>
+                  <el-option label="区域二" value="beijing"></el-option>
+                </el-select> </el-form-item
+            ></el-col>
+
+            <el-col :sm="smObj" :md="mdObj" :lg="lgObj">
+              <el-form-item>
+                <el-button type="primary" @click="submitForm('ruleForm')"
+                  >立即创建</el-button
+                >
+                <el-button @click="resetForm('ruleForm')">重置</el-button>
+              </el-form-item></el-col
+            >
+          </el-row>
+        </el-form>
+      </div>
+    </div>
+  </main-panel>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      isActive: true,
+      screenWidth: document.body.clientWidth,
+      smObj: {
+        span: 8,
+        offset: "",
+      },
+      lgObj: {
+        span: "6",
+      },
+      mdObj: {
+        span: 8,
+        offset: "",
+      },
+
+      ruleForm: {
+        name: "",
+        region: "",
+        date1: "",
+        date2: "",
+        delivery: false,
+        type: [],
+        resource: "",
+        desc: "",
+      },
+      rules: {
+        name: [
+          { required: true, message: "请输入活动名称", trigger: "blur" },
+          { min: 3, max: 5, message: "长度在 3 到 5 个字符", trigger: "blur" },
+        ],
+        region: [
+          { required: true, message: "请选择活动区域", trigger: "change" },
+        ],
+        date1: [
+          {
+            type: "date",
+            required: true,
+            message: "请选择日期",
+            trigger: "change",
+          },
+        ],
+        date2: [
+          {
+            type: "date",
+            required: true,
+            message: "请选择时间",
+            trigger: "change",
+          },
+        ],
+        type: [
+          {
+            type: "array",
+            required: true,
+            message: "请至少选择一个活动性质",
+            trigger: "change",
+          },
+        ],
+        resource: [
+          { required: true, message: "请选择活动资源", trigger: "change" },
+        ],
+        desc: [{ required: true, message: "请填写活动形式", trigger: "blur" }],
+      },
+    };
+  },
+  computed: {},
+  mounted() {
+    const that = this;
+    let zhfcrow = that.$refs.zhfcrow;
+    window.onresize = () => {
+      window.screenWidth = document.body.clientWidth;
+      that.screenWidth = window.screenWidth;
+
+      console.log(that.isActive);
+      console.log(that.screenWidth);
+
+      if (!that.isActive && that.screenWidth > 1200) {
+      } else if (!that.isActive && that.screenWidth < 1200) {
+        that.smObj.offset = 16;
+      } else if (that.isActive && that.screenWidth > 1200) {
+        that.lgObj.offset = 0;
+      }
+    };
+    console.log(zhfcrow.$children[2]);
+  },
+  methods: {
+    submitForm(formName) {
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          alert("submit!");
+        } else {
+          console.log("error submit!!");
+          return false;
+        }
+      });
+    },
+    resetForm(formName) {
+      const that = this;
+      this.isActive = !this.isActive;
+      console.log(this.isActive);
+      console.log(this.screenWidth);
+      this.mdObj.offset = 0
+
+      if(!that.isActive && that.screenWidth > 1200) {
+        that.mdObj.offset = 6;
+      } else if(!that.isActive && that.screenWidth < 1200) {
+        that.mdObj.offset = 16;
+      }
+    },
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+.query-wrap {
+  .el-row {
+    .el-col:last-child {
+      text-align: right;
+    }
+  }
+  .el-input,
+  .el-select {
+    width: 224px;
+    // max-width: 224px;
+  }
+}
+@media screen and (max-width: 1366px) {
+  .query-wrap .el-input,
+  .query-wrap .el-select {
+    width: 200px;
+    // max-width: 224px;
+  }
+}
+</style>

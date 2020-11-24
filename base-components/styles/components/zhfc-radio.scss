@@ -1,0 +1,55 @@
+@mixin zhfc-radio-com {
+    & .el-radio__inner {
+        background-color: transparent;
+        width: 16px;
+        height: 16px;
+    }
+
+    &.is-checked .el-radio__inner::after {
+        width: 8px;
+        height: 8px;
+        background-color: $primary-color;
+
+    }
+
+    &.el-radio--small .el-radio__inner {
+        width: 14px;
+        height: 14px;
+
+        &::after {
+            width: 6px;
+            height: 6px;
+            background-color: $primary-color;
+        }
+    }
+
+    &.el-radio--mini .el-radio__inner {
+        width: 12px;
+        height: 12px;
+
+        &::after {
+            width: 4px;
+            height: 4px;
+            background-color: $primary-color;
+        }
+    }
+
+    & .is-disabled .el-radio__inner::after {
+        background: rgba(0, 0, 0, 0.25);
+    }
+
+    & .el-radio__input.is-checked+.el-radio__label {
+        color: rgba(0, 0, 0, 0.65);
+
+    }
+}
+
+
+
+.zhfc-radio.el-radio {
+    @include zhfc-radio-com;
+}
+
+.zhfc-form-btn .el-radio {
+    @include zhfc-radio-com;
+}

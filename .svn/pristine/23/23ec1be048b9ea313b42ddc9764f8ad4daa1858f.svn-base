@@ -1,0 +1,122 @@
+<template>
+  <div class="about-wrap">
+    <main-panel :transparent="true">
+      <scroll-panel>
+        <panel-item name="project" label="项目信息">
+          <template slot="header">
+            <el-button class="zhfc-button" type="text" size="small" @click="changeShow">{{tips}}一个新的item</el-button>
+          </template>
+          <sub-panel-item title="二级标题" line>
+            <sub-panel-item title="三级标题1" line>
+              <div>
+                <div style="margin-top: 15px;width:250px">
+                  <el-input placeholder="请输入内容" v-model="input3" class="input-with-select">
+                    <el-select slot="append" style="width:60px" placeholder="请选择" v-model="value1">
+                      <el-option label="元" value="1"></el-option>
+                      <el-option label="%" value="2"></el-option>
+                    </el-select>
+                  </el-input>
+                </div>
+              </div>
+              <template slot="buttons">
+                <el-button class="zhfc-button" type="text" size="small">更多操作</el-button>
+              </template>
+            </sub-panel-item>
+            <sub-panel-item title="map">
+              <div>
+                <el-button icon="el-icon-location" @click="chooseAddress">地图坐标</el-button>
+                <el-input v-model="address" readonly ></el-input>
+                <p>{{point}}</p>
+              </div>
+              <template slot="buttons">
+                <el-button class="zhfc-button" type="text" size="small">更多操作</el-button>
+              </template>
+            </sub-panel-item>
+          </sub-panel-item>
+        </panel-item>
+        <panel-item name="attachment" label="要件信息">
+          <sub-panel-item title="二级标题">
+            <sub-panel-item title="进度条">
+              <div>
+                <zhcf-steps :StepsData="StepsData" :active="1"></zhcf-steps>
+              </div>
+            </sub-panel-item>
+            <sub-panel-item title="上传图片">
+              <div>
+                <zhfc-upload-img width="600px" @upload="postUpload" accept=".jpg,.jpeg,.png,.JPG,.JPEG,.PNG" ></zhfc-upload-img>
+              </div>
+            </sub-panel-item>
+          </sub-panel-item>
+        </panel-item>
+        <panel-item name="business" label="业务信息" :show="show3">
+          <sub-panel-item title="二级标题">
+            <sub-panel-item title="三级标题1">
+              <div>
+                <map-address></map-address>
+              </div>
+            </sub-panel-item>
+            <sub-panel-item title="三级标题2">
+              <div>4567890</div>
+            </sub-panel-item>
+          </sub-panel-item>
+        </panel-item>
+ 
+        <template slot="action">
+          <el-button class="zhfc-button">保存</el-button>
+          <el-button class="zhfc-button primary">提交</el-button>
+        </template>
+      </scroll-panel>
+    </main-panel>
+
+    <map-address-dialog :visible.sync="dialogVisible" @sureAddress="sureAddress" v-if="dialogVisible" title="地图定位"></map-address-dialog>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "ScrollTest",
+  data() {
+    return {
+    
+      input3:'',
+      value1:'1',
+      dialogVisible:false,
+      address:'',
+      StepsData:[
+        {title:'第一步',description:'20%'},
+        {title:'第二部',description:'40%'},
+        {title:'第三部',description:'60%'},
+        {title:'第四部',description:'100%'}
+      ],
+      show3:false,
+      tips:'显示',
+      point:null
+    };
+  },
+  mounted() {},
+  methods: {
+    chooseAddress(){
+      //点击显示地图
+      this.dialogVisible=true
+    },
+    sureAddress(ad,pt){
+      //确认选中了地址
+      this.address=ad
+      this.dialogVisible=false
+      this.point=pt
+      console.log(pt)
+    },
+    postUpload(formdata,file){
+
+    },
+    changeShow(){
+      this.show3=!this.show3
+      this.tips=this.show3?'隐藏':'显示'
+    }
+  }
+};
+</script>
+
+<style lang="scss">
+
+</style>

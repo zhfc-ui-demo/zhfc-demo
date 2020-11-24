@@ -1,0 +1,76 @@
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+
+Vue.use(VueRouter)
+
+const routes = [
+  {
+    path: '/',
+    name: 'home',
+    component: () => import('../views/home.vue')
+  },
+  {
+    path: '/list/demo1',
+    name: 'demo1',
+    component: () => import('../views/list/demo1.vue')
+  },
+  {
+    path: '/list/demo2',
+    name: 'demo2',
+    component: () => import('../views/list/demo2.vue')
+  },
+  {
+    path: '/list/demo3',
+    name: 'demo3',
+    component: () => import('../views/list/demo3.vue')
+  },
+  {
+    path: '/list/demo4',
+    name: 'demo4',
+    component: () => import('../views/list/demo4.vue')
+  },
+  {
+    path: '/list/demo6',
+    name: 'demo6',
+    component: () => import('../views/list/demo6.vue')
+  },
+  {
+    path: '/detail/demo5',
+    name: 'demo5',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import('../views/detail/demo5.vue')
+  },
+  {
+    path: '/detail/demo8',
+    name: 'demo8',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import('../views/detail/demo8.vue')
+  },
+  {
+    path: '/list/demo7',
+    name: 'demo7',
+    component: () => import('../views/img/demo7.vue')
+  },
+  {
+    path: '/list/demo10',
+    name: 'demo10',
+    component: () => import('../views/list/demo10.vue')
+  },
+  {
+    path: '/list/demo9',
+    name: 'demo9',
+    component: () => import('../views/list/demo9.vue')
+  },
+]
+const router = new VueRouter({
+  // 子项目设置history，base设置为父项目的一级路由。
+  base: '/vue/',
+  // mode: 'history',
+  routes
+})
+
+export default router

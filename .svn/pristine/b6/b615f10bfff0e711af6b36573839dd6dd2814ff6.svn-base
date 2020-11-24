@@ -1,0 +1,33 @@
+import Vue from 'vue'
+import App from './App.vue'
+import router from './router'
+import store from './store'
+import ElementUI from 'element-ui'
+import BaiduMap from 'vue-baidu-map'
+import Supervision from '../../base-components'
+// import '../../base-components/styles/index.scss'
+// import Supervision from 'zhfc-lib'
+// import 'zhfc-lib/src/styles/index.scss'
+import './assets/style/theme/index.css'
+import '../../base-components/styles/index.scss'
+
+Vue.use(BaiduMap, {
+  ak: 'CZodsUXlVUTmM7gI1M0jHgb6'
+})
+
+// 导入element-ui
+Vue.use(ElementUI, { size: 'medium' })
+
+// 导入监管公共模块
+Vue.use(Supervision)
+
+Vue.config.productionTip = false
+import { mixin } from './mixin'
+
+Vue.mixin(mixin)
+new Vue({
+    router,
+    store,
+    render: h => h(App)
+  }).$mount('#app')
+

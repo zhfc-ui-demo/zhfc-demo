@@ -1,0 +1,141 @@
+<template>
+  <div :class="['scroll-panel-container',{'has-sidebar': showSidebar}]">
+    <div class="scroll-panel-content">
+      <slot />
+    </div>
+    <div class="scroll-panel-indicator">
+      <indicator v-if="showSidebar&&showIndicator" />
+      <div class="panel-actions-container">
+        <slot name="action" />
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import Indicator from "./Indicator";
+import { debounce } from "../../utils/common";
+import scrollTo from "../../utils/scroll-to";
+
+// 滚动容器
+export default {
+  name: "ScrollPanel",
+  components: {
+    Indicator
+  },
+  props: {
+    // 是否显示侧边栏
+    showSidebar: {
+      type: Boolean,
+      default: true
+    },
+    // 是否显示位置指示器
+    showIndicator: {
+      type: Boolean,
+      default: true
+    },
+    // 当前视图面板
+    current: String
+  },
+  data() {
+    return {
+      // 子面板
+      panelItems: [],
+      // 当前显示面板
+      currentName: this.current
+    };
+  },
+  provide() {
+    return {
+      scrollPanel: this
+    };
+  },
+  watch: {
+    current(val) {
+      this.scrollIntoView(val);
+    },
+    panelItems(val) {
+      const panelName = this.currentName
+        ? this.currentName
+        : val.length
+        ? val[0].name
+        : "";
+      this.$nextTick(() => {
+        this.scrollIntoView(panelName);
+      });
+    }
+  },
+  mounted() {
+    this.$scroll = this.$el.querySelector(".scroll-panel-content");
+    this.$scroll.addEventListener(
+      "scroll",
+      debounce(() => this.calcScrollPanel(), 50)
+    );
+  },
+  methods: {
+    // 计算当前滚动面板位置
+    calcScrollPanel() {
+      if (this.lock) return;
+
+      const { scrollTop, scrollHeight, offsetHeight } = this.$scroll;
+
+      // 计算当前面板索引
+      let index = 0;
+      const itemTops = this.panelItems.map((item, index) =>
+        index > 0 ? item.$el.offsetTop - 25 : item.$el.offsetTop
+      );
+      for (let i = 0; i < itemTops.length - 1; i++) {
+        if (itemTops[i] <= scrollTop && scrollTop < itemTops[i + 1]) {
+          index = i;
+          break;
+        }
+      }
+      if (
+        scrollTop > 0 &&
+        (scrollTop >= itemTops[itemTops.length - 1] ||
+          scrollTop === scrollHeight - offsetHeight)
+      ) {
+        index = this.panelItems.length - 1;
+      }
+
+      const panel = this.panelItems[index];
+
+      this.selectIndicator(panel);
+
+      this.raiseChangeEvent(panel.name);
+    },
+    // 滚动面板到当前视图
+    scrollIntoView(name) {
+      if (!name || this.lock) return;
+
+      const panel = this.panelItems.find(panel => panel.name === name);
+      if (!panel) return;
+
+      // 设置标志位，点击指示器触发的滚动不计算位置
+      this.lock = true;
+      this.selectIndicator(panel);
+      scrollTo(this.$scroll, panel.$el.offsetTop, 300, () => {
+        this.lock = false;
+        this.raiseChangeEvent(panel.name);
+      });
+    },
+    //选中位置指示器
+    selectIndicator(panel) {
+      this.panelItems.forEach(
+        item => (item.selected = item.name === panel.name)
+      );
+    },
+    // 触发当前视图改变事件
+    raiseChangeEvent(name) {
+      const prevName = this.currentName;
+      this.currentName = name;
+      if (name !== prevName) {
+        this.$emit("currentChanged", {
+          prev: prevName,
+          current: name
+        });
+      }
+    }
+  }
+};
+</script>

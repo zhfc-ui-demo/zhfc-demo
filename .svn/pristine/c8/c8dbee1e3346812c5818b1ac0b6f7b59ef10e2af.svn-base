@@ -1,0 +1,74 @@
+@mixin zhfc-page {
+    position: relative;
+    text-align: right;
+    color: $primary-text-color;
+    .zhfc-total {
+        position: absolute;
+        left: 5px;
+        font-size: 13px;
+        font-weight: 400;
+    }
+    // button,
+    // .el-pagination__editor,
+    // .el-pagination__sizes,
+    // .el-input--mini .el-input__inner,
+    // .el-pagination__jump {
+    //     height: 26px;
+    //     line-height: 26px;
+    // } 
+    .el-pager {
+        font-weight: normal;
+
+        li {
+            padding: 0;
+            min-width: 26px;
+            height: 26px;
+            line-height: 26px;
+            border-radius: 2px;
+            margin: 0 2px;
+
+            &.active {
+                color: #fff;
+                background-color: #1890FD;
+            }
+        }
+    }
+
+    .el-pagination__sizes {
+        margin-left: 10px;
+        margin-right: 0;
+        padding-right: 0;
+    }
+
+    .el-pagination__total {
+        float: left;
+    }
+
+    &.el-pagination--small {
+        .el-pager li {
+            min-width: 22px;
+            height: 22px;
+        }
+
+        .el-select .el-input .el-input__inner {
+            height: 22px;
+        }
+
+        .el-input__suffix-inner {
+            display: inline-block;
+        }
+
+        .el-select__caret {
+            line-height: 24px;
+        }
+    }
+
+}
+
+.zhfc-pagination.el-pagination {
+    @include zhfc-page;
+}
+
+.zhfc-pagination .el-pagination {
+    @include zhfc-page;
+}

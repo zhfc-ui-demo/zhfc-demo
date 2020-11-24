@@ -1,0 +1,74 @@
+<template>
+  <div  class="demo9">
+    <div>
+      <p>type1格式</p>
+      <zhfc-image
+        :url="url"
+        :title="title"
+        :fit="fit"
+        @doSave="doSave"
+        @doEdit="doEdit"
+        @doDelete="doDelete"
+        type="1"
+      ></zhfc-image>
+    </div>
+    <div>
+      <p>type2格式</p>
+      <zhfc-image
+        :url="url"
+        :title="title"
+        :houseType="houseType"
+        :housing="housing"
+        :fit="fit"
+        @doSave="doSave"
+        @doEdit="doEdit"
+        @doDelete="doDelete"
+        type="2"
+      ></zhfc-image>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    const imgUrl_A = require(`../../assets/image/image01.jpeg`);
+    const imgUrl_B = require(`../../assets/image/image02.jpeg`);
+    return {
+      urls: [imgUrl_A, imgUrl_B],
+      fit: "fill",
+      url: imgUrl_A,
+      title: "楼盘名称2",
+      houseType: "2室内1厅2卫",
+      housing: 10,
+
+      totalCount: 10,
+      currentIndex: 1,
+      limit: 10,
+      pageSizes: [10, 20, 30, 50],
+      tableData: [],
+    };
+  },
+  methods: {
+    doSave() {
+      console.log(11);
+    },
+    doEdit() {
+      console.log(12);
+    },
+    doDelete() {
+      console.log(13);
+    },
+  },
+};
+</script>
+
+<style scoped>
+.demo9>div {
+   height: 500px;
+    display:inline-block;
+    vertical-align: top;
+    margin-right: 20px;
+  
+}
+</style>

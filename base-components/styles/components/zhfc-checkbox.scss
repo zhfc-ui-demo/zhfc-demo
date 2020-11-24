@@ -1,0 +1,19 @@
+@mixin zhfc-checkbox-com {
+    &.is-checked .el-radio__inner::after {
+        width: 8px;
+        height: 6px;
+        background-color: $primary-color;
+
+    }
+    & .el-checkbox__input.is-checked + .el-checkbox__label {
+        color: rgba(0, 0, 0, 0.65);
+
+    }
+}
+
+
+
+.zhfc-checkbox.el-checkbox  {
+    @include zhfc-checkbox-com;
+}
+

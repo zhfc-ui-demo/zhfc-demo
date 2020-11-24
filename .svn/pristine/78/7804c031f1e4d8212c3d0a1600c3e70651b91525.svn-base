@@ -1,0 +1,43 @@
+@mixin zhfc-button-com {
+    border-radius: $medium-border-radius;
+    transition: all 0.1s;
+
+    &:hover {
+        opacity: 0.8;
+    }
+
+    &.el-button--mini {
+        border-radius: $mini-border-radius;
+    }
+
+    &.el-button--small {
+        border-radius: $small-border-radius;
+    }
+
+    &.el-button--text {
+        color: $light-color;
+    }
+
+    &.block {
+        display: block;
+        width: 100%;
+    }
+
+    &.primary {
+        background: $primary-color;
+        border-color: $primary-color;
+        color: #fff;
+    }
+
+    &.info {
+        background: #ecf5ff;
+        border-color: $light-border-color;
+        color: $light-text-color;
+    }
+}
+.zhfc-button.el-button {
+    @include zhfc-button-com;
+}
+.zhfc-form-btn .el-button {
+    @include zhfc-button-com;
+}

@@ -1,0 +1,91 @@
+import axios from 'axios'  
+import {md5} from "../utils/md5.js"
+let baseURL = location.origin
+let cacheObj = {}
+function post(url,paramDic){
+    let md5String = md5(JSON.stringify(paramDic)+url);
+    return new Promise((resolve, reject) => {
+        if(cacheObj[md5String]){
+            resolve(cacheObj[md5String]);
+            return;
+        }
+        axios({
+            url:url,
+            data:transformRequest(paramDic),
+            method:"post",
+            baseURL:baseURL
+        }).then(res =>{ 
+            cacheObj[md5String] = res.data
+            resolve(res.data)
+        }).catch(err =>{
+            reject(err)
+        })
+    })
+}
+function postJson(url,paramDic){
+    let md5String = md5(JSON.stringify(paramDic)+url);
+    return new Promise((resolve, reject) => {
+        if(cacheObj[md5String]){
+            resolve(cacheObj[md5String]);
+            return;
+        }
+        axios({
+            url:url,
+            data:paramDic,
+            method:"post",
+            baseURL:baseURL,
+            headers:{
+                "Content-Type":"application/json"
+            },
+        }).then(res =>{ 
+            cacheObj[md5String] = res.data
+            resolve(res.data)
+        }).catch(err =>{
+            reject(err)
+        })
+    })
+}
+
+function get(url,paramDic){
+    let md5String = md5(JSON.stringify(paramDic)+url);
+    return new Promise((resolve, reject) => {
+        if(cacheObj[md5String]){
+            resolve(cacheObj[md5String]);
+            return;
+        }
+        axios({
+            url:url,
+            params:paramDic,
+            method:"get",
+            baseURL:baseURL
+        }).then(res =>{ 
+            cacheObj[md5String] = res.data
+            resolve(res.data)
+        }).catch(err =>{
+            reject(err)
+        })
+    })
+}
+function transformRequest (obj){
+	if(obj == {}){
+		return null
+	}
+	var str = [];
+	for (var p in obj){
+		if(obj[p] instanceof Array){
+			obj[p].forEach(element => {
+				str.push(encodeURIComponent(p)+"="+encodeURIComponent(element));
+			});     
+		}else{
+		if(obj[p]!==undefined && obj[p]!==null){    //注：这里必须讲 false 排除在外，否则传入实际false将跳过处理。
+			str.push(encodeURIComponent(p)+"="+encodeURIComponent(obj[p]));
+			}
+		}
+	}
+	return str.join("&");
+}
+export default{
+    post,
+    get,
+    postJson
+}

@@ -1,0 +1,43 @@
+.main-panel-container {
+    border: 1px solid $normal-border-color;
+    background-color: #fff;
+    border-radius: 4px;
+    overflow-y: auto;
+
+    .header-section {
+        padding: 12px 15px;
+
+        .query-wrap {
+            .el-form-item {
+                margin-right: 20px !important;
+                margin-bottom: 13px !important;
+            }
+            .el-form-item_label {
+                font-weight: normal;
+            }
+        }
+
+        .action-wrap {
+            &::after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+            .left-action {
+                float: left;
+            }
+            .right-action {
+                float: right;
+            }
+        }
+    }
+
+    .content-section {
+        height: 100%;
+    }
+
+    .footer-section {
+        padding: 5px 20px 5px 25px;
+        text-align: right;
+    }
+}

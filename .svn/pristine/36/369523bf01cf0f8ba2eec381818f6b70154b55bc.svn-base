@@ -1,0 +1,53 @@
+@mixin hover {
+
+    &.el-date-editor:hover {
+        position: relative;
+        // border-color: $primary-color
+    }
+
+    &.is-disabled.el-input__inner:hover {
+        border-color: #E4E7ED
+    }
+
+    // &.el-date-editor .el-range__icon {
+    //     float: right;
+    // }
+    .el-range__close-icon,
+    .el-input__suffix .el-input__suffix-inner .el-input__icon {
+        position: absolute;
+        right: 10px;
+        background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAoklEQVQ4T8XTPQoCMRBA4W8FLyAeQRBvZqP2NmpjrzbeTBY8gngBQWQggWVJscsqTpMwyTze5KcyMKpC/Rgz3FprC9zxauabgGlamGCPdQtwTvlnyj9izIA5dj27OaDOgNBbYoMwCFjMm3FCFIVBzK/RZgnQRaQI2CZ6F0BYHtsGK1y6VCPv/W4L+RC7SPzmEP9vMOgaR4jn3CdqvEu/sQ/EBy6cLBFRp712AAAAAElFTkSuQmCC) no-repeat center;
+        opacity: .3;
+    }
+    .el-input__suffix .el-input__suffix-inner .el-input__icon {
+        right: 5px;
+    }
+    .el-input__icon.el-range__icon {
+        display: none;
+    }
+    .el-input__inner {
+        border-radius: 2px;
+    }
+    .el-input__prefix {
+        display: none;
+    }
+    width: 240px;
+}
+
+
+
+.zhfc-picker.el-date-editor {
+    // @include zhfc-input-inner;
+    @include hover;
+    &.el-input__inner {
+        border-radius: 2px;
+    }
+}
+.zhfc-picker .el-date-editor {
+    // @include zhfc-input-inner;
+    @include hover;
+    &.el-input__inner {
+        border-radius: 2px;
+    }
+}
+

@@ -1,0 +1,38 @@
+@mixin zhfc-tree-com {
+    box-sizing: border-box;
+    width: 272px;
+    padding: 30px 24px;
+    height: 100%;
+
+    .sub_title {
+        margin-bottom: 18px;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 41px;
+        color: rgba(0, 0, 0, 0.85);
+    }
+
+    .el-tree {
+        .el-tree-node__content {
+            height: 30px;
+            margin-bottom: 6px;
+            color: rgba(0, 0, 0, 0.65);
+        }
+
+        .el-tree-node:focus>.el-tree-node__content,
+        .el-tree-node__content:hover {
+            background: #e6f7ff;
+        }
+
+        .el-tree-node__content>.el-tree-node__expand-icon {
+            padding-left: 8px;
+            padding-right: 8px;
+        }
+    }
+}
+
+
+
+.zhfc-tree {
+    @include zhfc-tree-com;
+}

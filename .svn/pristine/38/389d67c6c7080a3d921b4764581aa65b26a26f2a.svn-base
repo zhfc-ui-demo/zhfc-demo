@@ -1,0 +1,10 @@
+<meta charset="utf-8">
+<title>zhfc-lib demo</title>
+<script src="./zhfc-lib.umd.js"></script>
+
+<link rel="stylesheet" href="./zhfc-lib.css">
+
+
+<script>
+console.log(zhfc-lib)
+</script>

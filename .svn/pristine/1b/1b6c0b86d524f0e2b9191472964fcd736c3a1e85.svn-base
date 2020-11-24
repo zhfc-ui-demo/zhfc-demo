@@ -1,0 +1,83 @@
+<template>
+  <div>
+    <el-button @click="onPreview">预览</el-button>
+    <zhfc-img-viewer
+      v-if="showViewer"
+      :on-close="closeViewer"
+      :url-list="info"
+      @download="download"
+      @removeImg="removeImg"
+    />
+  </div>
+</template>
+<script>
+// 导入组件
+import test1 from "../../assets/test/test1.jpg";
+import test2 from "../../assets/test/test2.jpg";
+import test3 from "../../assets/logo.png";
+
+export default {
+  name: "Index",
+  data() {
+    return {
+      showViewer: false, // 显示查看器
+      info: [
+        {
+          url: test1,
+          infoType: "身份证明",
+          cardType: "身份证",
+          cardID: "1234567890",
+          name: "张三",
+          gender: "女",
+          nation: "汉",
+          brith: "1990-0-0",
+          address: "深圳",
+          gov: "公安局",
+          expData: "2020-0-0",
+        },
+        {
+          url: test2,
+          infoType: "身份证明",
+          cardType: "身份证",
+          cardID: "1234567890",
+          name: "小米",
+          gender: "男",
+          nation: "汉",
+          brith: "1992-0-0",
+          address: "深圳",
+          gov: "公安局",
+          expData: "2020-0-0",
+        },
+        {
+          url: test3,
+          infoType: "身份证明",
+          cardType: "身份证",
+          cardID: "1234567890",
+          name: "小四",
+          gender: "男",
+          nation: "汉",
+          brith: "1992-0-0",
+          address: "深圳",
+          gov: "公安局",
+          expData: "2020-0-0",
+        },
+      ],
+    };
+  },
+  methods: {
+    onPreview() {
+      this.showViewer = true;
+    },
+    // 关闭查看器
+    closeViewer() {
+      this.showViewer = false;
+    },
+    download(val) {
+      console.log(val);
+    },
+    removeImg(val) {
+      console.log(val);
+    },
+  },
+};
+</script>

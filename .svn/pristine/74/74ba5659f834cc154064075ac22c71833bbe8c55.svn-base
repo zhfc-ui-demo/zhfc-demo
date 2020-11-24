@@ -1,0 +1,42 @@
+$table-row-bg: #F2F8FF;
+$td-row:#F7F9FA;
+$td-active:#EBF5FF;
+@mixin zhfc-table {
+    color: $primary-text-color;
+        thead {
+            color: $primary-text-color;
+        }
+    
+        th {
+            background-color: $table-row-bg;
+        }
+    
+        .el-table__fixed-right-patch {
+            background-color: $table-row-bg;
+        }
+    
+        .el-table__row {
+            &:nth-child(even) {
+                background-color: $td-row;
+            }
+    
+            .cell {
+                .el-dropdown {
+                    margin-left: 10px;
+                }
+            }
+        }
+        .el-table__body tr.current-row > td{
+            background: $td-active;
+        }
+}
+.zhfc-table{
+    &.el-table {
+        @include zhfc-table;
+    }
+}
+.zhfc-table{
+    .el-table {
+        @include zhfc-table;
+    }    
+}

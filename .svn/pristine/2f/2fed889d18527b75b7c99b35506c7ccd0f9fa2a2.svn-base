@@ -1,0 +1,870 @@
+<style scoped>
+.im {
+  color: blueviolet;
+}
+</style>
+<template>
+  <div class="about-wrap">
+    <main-panel :transparent="true">
+      <scroll-panel>
+        <panel-item name="project" label="列表页-list">
+          <!-- <sub-panel-item title="一屏展示所有的列表demo1" name="demo1" line>
+            <sub-panel-item title="demo1-详解" name="demo1-详解" line>
+              <div>
+                <p class="im">
+                  调用标签
+                  <span v-text="'<main-panel>'"></span>
+                </p>
+                <p>
+                  <span v-text="'<main-panel>'"></span
+                  >为基础框架，没有对列表页html布局上进行过多封装，可灵活去使用，但对html觉得不太了解，建议demo2的
+                  <span v-text="'<main-panel-default>'"></span>
+                </p>
+              </div>
+            </sub-panel-item>
+            <template slot="buttons">
+              <el-button
+                class="zhfc-button"
+                type="text"
+                size="small"
+                @click="go('demo1')"
+                >查看</el-button
+              >
+            </template>
+          </sub-panel-item> -->
+          <sub-panel-item title="一屏展示所有的列表demo2" name="demo2" line>
+            <sub-panel-item title="demo2-详解" name="demo2-详解" line>
+              <div>
+                <p class="im">
+                  调用标签
+                  <span v-text="'<main-panel-default>'"></span>
+                </p>
+                <p>slot="headerForm":顶部搜索框部分</p>
+                <p>slot="leftAction":顶部左侧按钮区域</p>
+                <p>slot="rightAction":顶部右侧按钮区域</p>
+                <p>slot="footer":底部分页区域</p>
+                <p>（调用形式不一样，固定结构）和demo1效果没有差别</p>
+                <p>
+                  此组件不涉及布局上的html，封装比较固定，优点：不需要考虑布局直接使用，缺点对现有布局的改动不灵活
+                </p>
+              </div>
+            </sub-panel-item>
+            <template slot="buttons">
+              <el-button
+                class="zhfc-button"
+                type="text"
+                size="small"
+                @click="go('demo2')"
+                >查看</el-button
+              >
+            </template>
+          </sub-panel-item>
+          <!-- <sub-panel-item
+            title="非一屏展示，随整体内容滚动demo3"
+            name="demo3"
+            line
+          >
+            <sub-panel-item title="demo3-详解" name="demo3-详解" line>
+              <div>
+                <p class="im">
+                  调用：
+                  <span v-text="txt16"></span>设置type为2
+                </p>
+                <p>
+                  fill设置false，对el-table自定义高度，为true则按内容填充自适应高度，
+                </p>
+                <p>type:2//1一屏，2非一屏</p>
+              </div>
+            </sub-panel-item>
+            <template slot="buttons">
+              <el-button
+                class="zhfc-button"
+                type="text"
+                size="small"
+                @click="go('demo3')"
+                >查看</el-button
+              >
+            </template>
+          </sub-panel-item> -->
+          <!-- <sub-panel-item
+            title="非一屏展示，固定搜索和操作按钮在顶部demo4"
+            name="demo4"
+            line
+          >
+            <sub-panel-item title="demo4-详解" name="demo4-详解" line>
+              <div>
+                <p class="im">
+                  调用：
+                  <span v-text="txt17"></span>
+                </p>
+                <p>设置fixedHead属性为true即可固定搜索栏在顶部</p>
+                <p>type:2//1一屏，2非一屏</p>
+              </div>
+            </sub-panel-item>
+            <template slot="buttons">
+              <el-button
+                class="zhfc-button"
+                type="text"
+                size="small"
+                @click="go('demo4')"
+                >查看</el-button
+              >
+            </template>
+          </sub-panel-item> -->
+          <!-- <sub-panel-item title="列表搜索非圆角demo6" name="demo6" line>
+            <sub-panel-item title="demo6-详解" name="demo6-详解" line>
+              <div>
+                <p class="im">
+                  调用：
+                  <span v-text="txt18"></span>
+                </p>
+                <p>
+                  mainPanel是直接把input、select圆角用样式单独控制的，所以不想要圆角就去掉对应样式即可
+                </p>
+                <p>
+                  mainPanelDefault的组件外的panel组件加上:inputRadios="false"即可，默认是true
+                </p>
+              </div>
+            </sub-panel-item>
+            <template slot="buttons">
+              <el-button
+                class="zhfc-button"
+                type="text"
+                size="small"
+                @click="go('demo6')"
+                >查看</el-button
+              >
+            </template>
+          </sub-panel-item> -->
+          <!--  -->
+          <sub-panel-item title="带tabs展开table" name="10" line>
+            <sub-panel-item title="demo10-详解" name="demo10-详解" line>
+              <div>
+                <p class="im">
+                  调用标签
+                  <span v-text="'<main-panel>'"></span>
+                </p>
+                <p>
+                  <span v-text="'<main-panel>'"></span
+                  >为基础框架，没有对列表页html布局上进行过多封装，可灵活去使用，但对html觉得不太了解，建议demo2的
+                  <span v-text="'<main-panel-default>'"></span>
+                </p>
+              </div>
+            </sub-panel-item>
+            <template slot="buttons">
+              <el-button
+                class="zhfc-button"
+                type="text"
+                size="small"
+                @click="go('demo10')"
+                >查看</el-button
+              >
+            </template>
+          </sub-panel-item>
+          <!--  -->
+
+          <sub-panel-item title="图片list格式" name="demo9" line>
+            <sub-panel-item title="图片展示" name="demo9-详解" line>
+              <div>image 样式</div>
+            </sub-panel-item>
+            <template slot="buttons">
+              <el-button
+                class="zhfc-button"
+                type="text"
+                size="small"
+                @click="go('demo9')"
+                >查看</el-button
+              >
+            </template>
+          </sub-panel-item>
+        </panel-item>
+
+        <panel-item name="dialogs" label="弹出框">
+          <sub-panel-item title="弹出框" name="dialog1" line>
+            <div>
+              <p class="im">
+                调用：
+                <span v-text="txt2"></span>
+              </p>
+              <p>:visible.sync:设置显示隐藏</p>
+              <p>title:标题</p>
+              <p>title:标题</p>
+              <p>confirm:默认确定事件</p>
+              <p>slot="footer"自定义底部按钮区域</p>
+            </div>
+            <template slot="buttons">
+              <el-button
+                class="zhfc-button"
+                type="text"
+                size="small"
+                @click="dialogVisible = true"
+                >查看</el-button
+              >
+            </template>
+          </sub-panel-item>
+          <sub-panel-item title="可拖动弹出框" name="dialog2" line>
+            <div>
+              <z-dialog
+                class="zhfc-dialog"
+                :title="title"
+                :show.sync="dialogVisible2"
+                :zDialogRef="dialogName"
+                :isFooter="true"
+              >
+                <div slot="body">
+                  <div v-text="txt22"></div>
+                </div>
+
+                <div slot="footer" class="dialog-footer">
+                  <slot name="footer">
+                    <el-button
+                      class="zhfc-button plain"
+                      @click="dialogVisible2 = false"
+                      >取 消</el-button
+                    >
+                    <el-button class="zhfc-button primary">确 定</el-button>
+                  </slot>
+                </div>
+              </z-dialog>
+            </div>
+            <template slot="buttons">
+              <el-button
+                class="zhfc-button"
+                type="text"
+                size="small"
+                @click="dialogVisible2 = true"
+                >查看</el-button
+              >
+            </template>
+          </sub-panel-item>
+        </panel-item>
+
+        <panel-item name="buttons" label="按钮">
+          <sub-panel-item title="按钮" name="button" line>
+            <div>
+              <el-button class="zhfc-button primary">主要按钮</el-button>
+              <el-button class="zhfc-button plain">次要按钮</el-button>
+              <el-button class="zhfc-button danger">危险按钮</el-button>
+              <el-button class="zhfc-button danger-plain"
+                >危险按钮有边框</el-button
+              >
+              <el-button class="zhfc-button text">文字按钮</el-button>
+              <el-button class="zhfc-button danger-text">文字按钮</el-button>
+              <div style="margin-top: 10px" class="im">
+                <p>当前默认 size="medium"</p>
+                <div
+                  v-for="(item, index) in txt19"
+                  :key="index"
+                  v-text="item"
+                ></div>
+              </div>
+            </div>
+          </sub-panel-item>
+        </panel-item>
+
+        <panel-item name="Pagination" label="分页Pagination">
+          <div>
+            <div style="width: 600px">
+              <zhfc-pagination
+                v-show="totalCount > 0"
+                :total="totalCount"
+                :page-sizes="pageSizes"
+                :page.sync="currentIndex"
+                :limit.sync="limit"
+                @pagination="getPagedData"
+              ></zhfc-pagination>
+            </div>
+            <div style="margin-top: 10px" class="im">
+              <p>当前默认 size="medium"</p>
+              <div
+                v-for="(item, index) in txt19"
+                :key="index"
+                v-text="item"
+              ></div>
+            </div>
+          </div>
+        </panel-item>
+        <panel-item
+          name="input-select-datePicker"
+          label="input/select/datePicker/穿梭框样式调整"
+        >
+          <sub-panel-item title="input" name="input" line>
+            <div>
+              <el-input
+                class="zhfc-input"
+                suffix-icon="zhfc-icon-search"
+                v-model="queryForm.mc"
+                placeholder="可通过开发企业名称、项目名称、坐落搜索项目"
+                style="width: 350px"
+              ></el-input>
+              <div style="margin-top: 10px" class="im">
+                <p>
+                  <b style="color: red">icon</b> 规定
+                  <span style="color: red">尾部</span> 显示图标
+                </p>
+                <div v-text="txt20"></div>
+              </div>
+            </div>
+          </sub-panel-item>
+          <sub-panel-item title="select" name="select" line>
+            <div>
+              <el-select
+                multiple
+                class="zhfc-select"
+                v-model="queryForm.zt"
+                placeholder="请选择状态"
+                style="width: 350px; margin-top: 10px"
+              >
+                <el-option
+                  v-for="item in status"
+                  :key="item.value"
+                  :label="item.name"
+                  :value="item.value"
+                />
+              </el-select>
+              <div style="margin-top: 10px" class="im">
+                <p v-text="txt21"></p>
+              </div>
+            </div>
+          </sub-panel-item>
+          <sub-panel-item title="datePicker" name="datePicker" line>
+            <div>
+              <el-date-picker
+                class="zhfc-picker"
+                v-model="value1"
+                type="daterange"
+                range-separator="→"
+                start-placeholder="开始日期"
+                end-placeholder="结束日期"
+                prefix-icon="el-icon-date"
+                :clearable="false"
+              ></el-date-picker>
+            <br><br>
+              <el-date-picker
+                class="zhfc-picker"
+                v-model="value2"
+                type="date"
+                placeholder="选择日期"
+              >
+              </el-date-picker>
+              <div style="margin-top: 10px" class="im">
+                <p>class="zhfc-picker"</p>
+              </div>
+            </div>
+          </sub-panel-item>
+          <sub-panel-item title="transfer" name="transfer" line>
+            <div>
+              <el-transfer
+                class="zhfc-transfer"
+                filterable
+                v-model="value"
+                :data="data"
+                :titles="['源列表', '目标列表']"
+              ></el-transfer>
+              <div style="margin-top: 10px" class="im">
+                <p>添加 class="zhfc-transfer"</p>
+              </div>
+            </div>
+          </sub-panel-item>
+        </panel-item>
+
+        <panel-item name="zhfc-radio" label="单选框">
+          <el-radio class="zhfc-radio" v-model="radio" label="1"
+            >备选项</el-radio
+          >
+          <el-radio class="zhfc-radio" v-model="radio" label="2"
+            >备选项</el-radio
+          >
+          <div style="margin-top: 10px" class="im">
+            <p>添加 class="zhfc-radio"</p>
+          </div>
+          <el-checkbox class="zhfc-checkbox">备选项</el-checkbox>
+        </panel-item>
+
+        <panel-item name="details" label="详情页-右侧有定位">
+          <sub-panel-item title="框架" name="detail" line>
+            <div>
+              <p>
+                调用：
+                <span v-text="txt4" class="im"></span>；带滚动导航的面板组
+              </p>
+              <p>
+                调用：
+                <span v-text="txt5" class="im"></span
+                >；面板，label为标题，name唯一标识
+              </p>
+              <p>
+                调用：
+                <span v-text="txt6" class="im"></span
+                >；面板标题栏，右侧部分的自定义
+              </p>
+              <p>
+                调用：
+                <span v-text="txt7" class="im"></span
+                >；面板里的子栏目，可嵌套，形成二三级栏目；标题需要下边底线的时候，加上line属性
+              </p>
+              <p>
+                调用：
+                <span v-text="txt9" class="im"></span
+                >；面板子栏目的标题栏右侧部分的自定义
+              </p>
+              <p>
+                调用：
+                <span v-text="txt10" class="im"></span
+                >；整体右侧的按钮区域，如保存提交按钮
+              </p>
+              <p>
+                设置某一个折叠块显示隐藏，设置show属性，默认为true则显示，想隐藏则设置为false，右侧导航是动态变化的
+              </p>
+            </div>
+            <template slot="buttons">
+              <el-button
+                class="zhfc-button"
+                type="text"
+                size="small"
+                @click="go('demo5')"
+                >查看</el-button
+              >
+            </template>
+          </sub-panel-item>
+        </panel-item>
+
+        <panel-item name="map" label="地图定位">
+          <p>子系统安装vue-baidu-map,在main文件引入注册即可使用</p>
+          <p>import BaiduMap from 'vue-baidu-map'</p>
+          <p>Vue.use(BaiduMap, { ak: 'CZodsUXlVUTmM7gI1M0jHgb6' })</p>
+          <sub-panel-item title="dialog弹出地图" name="dialog弹出地图" line>
+            <div>
+              <p class="im">
+                调用：
+                <span v-text="txt11"></span>；弹出显示地图选择；
+              </p>
+              <p>title: 标题</p>
+              <p>:visible.sync:显示隐藏</p>
+              <p>
+                sureAddress:两个组件都是emit了sureAddress(addressStr,pt)方法，传两个值，第一个addressStr中文拼接地址，pt第二个经纬度坐标
+              </p>
+            </div>
+            <template slot="buttons">
+              <el-button
+                class="zhfc-button"
+                type="text"
+                size="small"
+                @click="go('demo5')"
+                >查看</el-button
+              >
+            </template>
+          </sub-panel-item>
+          <sub-panel-item title="直接显示" name="直接显示" line>
+            <div>
+              <p class="im">
+                调用：
+                <span v-text="txt12"></span>；直接显示地图选择；
+              </p>
+              <p>
+                sureAddress:两个组件都是emit了sureAddress(addressStr,pt)方法，传两个值，第一个addressStr中文拼接地址，pt第二个经纬度坐标
+              </p>
+            </div>
+            <template slot="buttons">
+              <el-button
+                class="zhfc-button"
+                type="text"
+                size="small"
+                @click="go('demo5')"
+                >查看</el-button
+              >
+            </template>
+          </sub-panel-item>
+        </panel-item>
+
+        <panel-item name="step" label="进度步骤条">
+          <div>
+            <p class="im">
+              调用：
+              <span v-text="txt13"></span>；
+            </p>
+            <p>active:第几步；从0开始</p>
+            <p>StepsData：进度、步骤数据；title:标题；description：描述</p>
+          </div>
+          <template slot="buttons">
+            <el-button
+              class="zhfc-button"
+              type="text"
+              size="small"
+              @click="go('demo5')"
+              >查看</el-button
+            >
+          </template>
+        </panel-item>
+
+        <panel-item name="tree" label="树形菜单">
+          <div>
+            <p class="im">
+              调用：
+              <span v-text="txt23" style="white-space: pre-wrap"></span>
+            </p>
+            <zhfc-tree>
+              <div slot="header">{{ title }}</div>
+              <el-tree
+                icon-class="el-icon-arrow-right"
+                :data="data"
+                :props="defaultProps"
+              ></el-tree>
+            </zhfc-tree>
+          </div>
+          <template slot="buttons">
+            <el-button
+              class="zhfc-button"
+              type="text"
+              size="small"
+              @click="go('demo5')"
+              >查看</el-button
+            >
+          </template>
+        </panel-item>
+
+        <panel-item name="uploadimg" label="上传图片">
+          <sub-panel-item title="详解" name="upload" line>
+            <div>
+              <p class="im">
+                调用：
+                <span v-text="txt14"></span>；
+              </p>
+
+              <p>width:可设置宽度，默认100%</p>
+              <p>
+                上传后，通过sure事件，接收两个值，第一个默认key为file的formdata格式，第二个file数据
+              </p>
+              <p>
+                accept定义要上传的文件类型，注意，因为此组件有预览，所以需要是图片格式，
+              </p>
+            </div>
+            <template slot="buttons">
+              <el-button
+                class="zhfc-button"
+                type="text"
+                size="small"
+                @click="go('demo5')"
+                >查看</el-button
+              >
+            </template>
+          </sub-panel-item>
+        </panel-item>
+
+        <panel-item name="viewimg" label="图片预览">
+          <sub-panel-item title="图片预览" name="图片预览" line>
+            <div>
+              <p class="im">
+                调用：
+                <span v-text="txt15"></span>；
+              </p>
+              <p>:on-close=关闭事件</p>
+              <p>:url-list=图片列表数据，目前没有实现自定义，后期优化</p>
+              <p>@download事件去执行下载，返回了当前图片信息</p>
+              <p>@removeImg事件去执行删除，返回了当前图片信息</p>
+            </div>
+            <template slot="buttons">
+              <el-button
+                class="zhfc-button"
+                type="text"
+                size="small"
+                @click="go('demo7')"
+                >查看</el-button
+              >
+            </template>
+          </sub-panel-item>
+          <sub-panel-item title="图片查看器" name="图片查看器" line>
+            <div>
+              <p class="im">
+                调用：
+                <span v-text="txt15"></span>；
+              </p>
+              <p>:title=弹窗标题</p>
+              <p>:dialogVisibleImg.sync=弹窗开关</p>
+              <p>:url-list=图片列表数据，目前没有实现自定义，后期优化</p>
+              <p>@download事件去执行下载，返回了当前图片信息</p>
+              <p>@removeImg事件去执行删除，返回了当前图片信息</p>
+            </div>
+            <template slot="buttons">
+              <el-button
+                class="zhfc-button"
+                type="text"
+                size="small"
+                @click="go('demo11')"
+                >查看</el-button
+              >
+            </template>
+          </sub-panel-item>
+        </panel-item>
+
+        <panel-item name="them" label="主题样式">
+          <div>
+            <p>
+              除了加上class="zhfc-*"
+              ，还可直接引入定义好的主题，目前赵通已经定义好主题，可以统一引入即可
+            </p>
+          </div>
+        </panel-item>
+
+        <panel-item name="apis" label="api">
+          <sub-panel-item title="详解" name="api" line>
+            <div>
+              <p>
+                demo重新加入了一个api使用方式，可根据需求参考使用，对axios简单的封装，对不同功能的api进行单独的设置，比较好维护和个性化处理，比如post-query
+                post-formdata
+              </p>
+            </div>
+          </sub-panel-item>
+        </panel-item>
+
+        <panel-item name="install" label="引入">
+          <sub-panel-item title="npm安装注册" name="npm安装注册" line>
+            <div>
+              <p>npm安装zhfc-libs</p>
+              import Supervision from 'zhfc-libs' <br />import
+              'zhfc-libs/src/styles/index.scss' <br />Vue.use(Supervision)
+            </div>
+          </sub-panel-item>
+          <sub-panel-item title="直接引入" name="直接引入" line>
+            <div>
+              <p>引入公共组件的文件</p>
+              <p>
+                import Supervision from '../../base-components'
+                <br />import '../../base-components/styles/index.scss'
+                <br />Vue.use(Supervision)
+              </p>
+            </div>
+          </sub-panel-item>
+        </panel-item>
+
+        <panel-item name="other" label="其他">
+          <sub-panel-item title="注意" name="注意" line>
+            <div>
+              <p>
+                1.目前封装都是把样式一起封装了，所以，如果需要灵活处理的，请根据需求借鉴组件重新封装组件
+              </p>
+              <p>
+                2.页面尽量模块化，不要把所有功能写在一个文件里，后期维护会很吃力，如所有弹窗都单独出来
+              </p>
+              <p>3.目录结构，按照功能区分，命名尽量语义化,切记勿用拼音简写</p>
+            </div>
+          </sub-panel-item>
+        </panel-item>
+      </scroll-panel>
+    </main-panel>
+
+    <zhfc-dialog
+      :visible.sync="dialogVisible"
+      title="我是标题"
+      @confirm="confirm"
+    >
+      <div style="padding: 0">
+        <!-- <p>
+          不想用默认的按钮，可以自己写slot="footer"里自定义，通element的用法
+        </p>
+        <p>confirm是默认的确认按钮的事件，</p>
+        <p>新封装dialog取消按钮，默认不执行事件，需要则自己slot定义即可</p>
+        <div v-text="txt"></div> -->
+        <el-tabs v-model="activeName" @tab-click="handleClick">
+          <el-tab-pane label="用户管理" name="first">用户管理</el-tab-pane>
+          <el-tab-pane label="配置管理" name="second">配置管理</el-tab-pane>
+          <el-tab-pane label="角色管理" name="third">角色管理</el-tab-pane>
+          <el-tab-pane label="定时任务补偿" name="fourth"
+            >定时任务补偿</el-tab-pane
+          >
+        </el-tabs>
+      </div>
+    </zhfc-dialog>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "ScrollTest",
+  data() {
+    const generateData = (_) => {
+      const data = [];
+      for (let i = 1; i <= 15; i++) {
+        data.push({
+          key: i,
+          label: `备选项 ${i}`,
+          disabled: i % 4 === 0,
+        });
+      }
+      return data;
+    };
+
+    return {
+      activeName: "first",
+      data: generateData(),
+      value: [1, 4],
+      radio: "1",
+      checked: true,
+      dialogVisible: false,
+      txt: `
+                <zhfc-dialog :visible.sync="dialogVisible" title="title" @confirm="confirm">测试标题不带背景</zhfc-dialog>`,
+      txt2: `'<zhfc-dialog :visible.sync="dialogVisible" title="我是标题" @confirm="confirm">'`,
+      txt3: `<main-panel :transparent="true">`,
+      txt4: `<scroll-panel>`,
+      txt5: ` <panel-item name="project" label="项目信息">`,
+      txt6: ` <template slot="header">`,
+      txt7: `<sub-panel-item title="二/三级标题" line>`,
+      txt9: `<template slot="buttons">`,
+      txt10: ` <template slot="action">`,
+      txt11: `<map-address-dialog :visible.sync="dialogVisible" @sureAddress="sureAddress" v-if="dialogVisible" title="地图定位"></map-address-dialog>`,
+      txt12: `<map-address></map-address>`,
+      txt13: `  <zhcf-steps :StepsData="StepsData" :active="1"></zhcf-steps>`,
+      txt14: `<zhfc-upload-img width="600px" @upload="postUpload" accept=".jpg,.jpeg,.png,.JPG,.JPEG,.PNG" ></zhfc-upload-img>`,
+      txt15: `<zhfc-img-viewer 
+                     v-if="showViewer" 
+                     :on-close="closeViewer" 
+                     :url-list="info" />`,
+      txt16: `<main-panel-default :type="2">`,
+      txt17: `<main-panel-default :type="2" :fixedHead="true">`,
+      txt18: ` <main-panel-default :inputRadios="false"  type="2">`,
+      txt19: [
+        '<el-button class="zhfc-button primary">主要按钮</el-button>',
+        ' <el-button class="zhfc-button plain">次要按钮</el-button>',
+        ' <el-button class="zhfc-button danger">危险按钮</el-button>',
+        '<el-button class="zhfc-button danger-plain">危险按钮有边框</el-button>',
+        '<el-button class="zhfc-button text">文字按钮</el-button>',
+        ' <el-button class="zhfc-button danger-text">文字按钮</el-button>',
+      ],
+      txt20: `<el-input
+                class="zhfc-input"
+                suffix-icon="zhfc-icon-search"
+                v-model="queryForm.mc"
+                placeholder="可通过开发企业名称、项目名称、坐落搜索项目"
+                style="width: 350px"
+              ></el-input>`,
+      txt21: `<el-select class="zhfc-select" v-model="queryForm.zt" placeholder="请选择状态">`,
+      txt22: `<z-dialog :title="title" :show.sync="dialogVisible" :zDialogRef="dialogName" :isFooter="false">
+                <div slot="body">对话框body</div>
+                <div slot="footer">对话框footer</div>
+              </z-dialog>`,
+      txt23: `  <zhfc-tree>
+                <div slot="header">{{ title }}</div>
+
+                <el-tree
+                  icon-class="el-icon-arrow-right"
+                  :data="data"
+                  :props="defaultProps"
+                  @node-click="handleNodeClick"
+                ></el-tree>
+              </zhfc-tree>
+
+              用zhfc-tree包裹一层，做了一点样式调整
+              slot="header" 为菜单标题 不需要可以去掉
+              `,
+      queryForm: {
+        mc: "",
+        zt: "",
+      },
+      status: [
+        { name: "在办", value: "1" },
+        { name: "已完成", value: "2" },
+        { name: "已完成", value: "3" },
+        { name: "已完成", value: "4" },
+        { name: "已完成", value: "5" },
+      ],
+      value1: "",
+      value2:"",
+
+      totalCount: 20,
+      currentIndex: 1,
+      limit: 10,
+      pageSizes: [10, 20, 30, 50],
+      // 可拖动弹窗
+      title: "提示",
+      dialogVisible2: false,
+      dialogName: "zDialogRef",
+
+      //  tree
+      title: "75353栋提案表",
+      data: [
+        {
+          label: "一级 1",
+          children: [
+            {
+              label: "二级 1-1",
+              children: [
+                {
+                  label: "三级 1-1-1",
+                  children: [
+                    {
+                      label: "四级 1-1-1",
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+        {
+          label: "一级 2",
+          children: [
+            {
+              label: "二级 2-1",
+              children: [
+                {
+                  label: "三级 2-1-1",
+                },
+              ],
+            },
+            {
+              label: "二级 2-2",
+              children: [
+                {
+                  label: "三级 2-2-1",
+                },
+              ],
+            },
+          ],
+        },
+        {
+          label: "一级 3",
+          children: [
+            {
+              label: "二级 3-1",
+              children: [
+                {
+                  label: "三级 3-1-1",
+                },
+              ],
+            },
+            {
+              label: "二级 3-2",
+              children: [
+                {
+                  label: "三级 3-2-1",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+      defaultProps: {
+        children: "children",
+        label: "label",
+      },
+      //
+    };
+  },
+  mounted() {},
+  methods: {
+    handleClick() {},
+    go(path) {
+      this.$router.push({
+        name: path,
+      });
+    },
+    confirm() {
+      alert("hello");
+    },
+    getPagedData() {},
+  },
+};
+</script>
+<style lang="stylus" scoped>
+
+</style>

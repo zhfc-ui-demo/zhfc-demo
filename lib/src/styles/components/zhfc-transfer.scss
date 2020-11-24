@@ -1,0 +1,84 @@
+
+@mixin transfer {
+    .el-transfer-panel {
+        border-radius: 2px;
+
+        border: 1px solid rgba(0, 0, 0, 0.14901960784313725);
+
+        .el-checkbox__inner {
+            width: 16px;
+            height: 16px;
+        }
+  
+    }
+    .el-transfer__buttons {
+        position: relative;
+        height: 56px;
+        padding: 0 12px;
+        .el-button.el-transfer__button {
+            display: block;
+            margin: 0;
+            border-radius: 2px;
+            box-sizing: border-box;
+            padding: 4px !important;
+            &:first-child {
+                position: absolute;
+                bottom: 0;
+            }
+        }
+    }
+    .el-transfer-panel__header {
+        background-color: #ffffff;
+
+        .el-checkbox__input.is-indeterminate .el-checkbox__inner {
+            background-color: #ffffff;
+
+            border: 1px solid rgba(0, 0, 0, 0.14901960784313725);
+
+            &::before {
+                top: 6px;
+                background-color: $primary-color;
+            }
+        }
+        .el-checkbox__inner::after {
+            top: 2px;
+        }
+    }
+
+
+    
+    .el-transfer-panel__body .el-transfer-panel__filter  {
+        .el-input__inner:hover {
+            border-color: $primary-color
+        }
+        .el-input__inner {
+            border-radius: 2px;
+        }
+
+    }
+    .el-transfer-panel .el-checkbox__inner::after {
+        left: 5px;
+    }
+
+    .el-transfer-panel__body .el-checkbox__inner::after {
+        top: 2px;
+    }
+    // .el-input__prefix {
+    //     position: relative;
+    //     // right: 0;
+    // }
+    // .el-icon-search {
+    //     position: absolute;
+    //     right: 0;
+    //     top: 10px;
+    //     // display: none;
+    //     background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAA40lEQVQ4T6XTyUoEUQyF4a+dcFo6ICiCvv8LOSC4cEBwQFFw5kgKyu66Ddp3U4skf05OUiMzvlGjfgGLeMXHtB7jgGVsI98vJP6M64JNsPqAFO3hHrfVOUo2sIZzvI0T+oD96nYzIHmn1Fy0AJn3ACeNmTt1xy3ASsk/mmLqIU7x3s/pRsisgwmVnAa7aCpIXgyMSVcDKpqxvolLBcna7kpqvMkWVgv8MG0LiaVgs9Y2h0884gVbuMTTkAdD4PnaSA4qbx1Z5y9I65Rb1zsB+SugU5JzP8uI/wEE0vnz87PM9L4BoFcuEeFau8gAAAAASUVORK5CYII=) no-repeat center;
+    //     &::before {
+    //         display: none;
+    //     }
+    // }
+}
+
+.zhfc-transfer {
+    @include transfer
+}

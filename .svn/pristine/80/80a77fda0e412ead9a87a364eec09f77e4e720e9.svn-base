@@ -1,0 +1,25 @@
+/* 主题色 */
+$primary-color: #0d4d93;
+$light-color: #409eff;
+
+/* 文字颜色 */
+$normal-text-color: #333;
+$primary-text-color: #526a89;
+$light-text-color: #409eff;
+$panel-title-color: #0D4D93;
+$gray-color:#D4DAE2;
+$gray2-color:#ABB8C7;
+
+/* 边框颜色 */
+$normal-border-color: #e6eaee;
+$light-border-color: #409eff;
+$dark-border-color: #ccc;
+
+
+/* 3种尺寸圆角大小 */
+$mini-border-radius: 14px;
+$small-border-radius: 16px;
+$medium-border-radius: 20px;
+
+
+

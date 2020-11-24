@@ -1,0 +1,27 @@
+@mixin zhfc-tabs-com {
+    .el-tabs__header {
+        margin-bottom: 24px;
+    }
+    .el-tabs__header .el-tabs__nav-wrap::after {
+        height: 0px !important;
+    }
+    // .el-tabs__content {
+        
+    //      border-bottom: 1px solid rgba(0, 0, 0, 0.0784313725490196);
+    // }
+    .el-badge__content.is-fixed {
+        top: 8px;
+        right: 3px;
+        background-color: #FF4D4F;
+    }
+    .el-tabs__item {
+        height: 34px;
+    }
+}
+
+
+
+.zhfc-tabs.el-tabs {
+    @include zhfc-tabs-com;
+}
+

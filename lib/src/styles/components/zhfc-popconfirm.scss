@@ -1,0 +1,31 @@
+
+.el-popover {
+    padding: 16px;
+    .el-popover__title {
+        font-size: 16px;
+        margin-bottom: 14px;
+        font-family: PingFangSC-Medium 微软雅黑;
+        font-weight: 700;
+        color: $primary-text-blod-color;
+    }
+    .el-popconfirm__icon {
+        margin-right: 10px;
+    }
+    .el-popconfirm__main {
+        margin: 0;
+        padding-bottom: 12px;
+    }
+
+}
+
+.el-popover.el-popover--plain {
+    padding: 16px 30px 24px;
+    .el-popover__title {
+        font-size: 16px;
+        margin-bottom: 14px;
+        font-family: PingFangSC-Medium 微软雅黑;
+        font-weight: 700;
+        color: $primary-text-blod-color;
+    }
+}
+

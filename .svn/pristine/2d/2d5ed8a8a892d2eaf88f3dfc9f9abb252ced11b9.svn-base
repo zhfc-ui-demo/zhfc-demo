@@ -1,0 +1,164 @@
+@mixin zhfc-button-com {
+    // border-radius: $medium-border-radius;
+    transition: all 0.1s;
+    // &:hover {
+    //     opacity: 0.8;
+    // }
+
+    // &.el-button--mini {
+    //     border-radius: $mini-border-radius;
+    // }
+
+    // &.el-button--small {
+    //     border-radius: $small-border-radius;
+    // }
+    &.block {
+        display: block;
+        width: 100%;
+    }
+
+
+    
+    &.el-button--primary,
+    &.primary {
+        background: $primary-color;
+        border-color: $primary-color;
+        color: #fff;
+
+        &:hover {
+            background: #66B1FF;
+            border-color: #66B1FF;
+        }
+
+        &:focus {
+            background: #3B8DE6;
+            border-color: #3B8DE6;
+        }
+
+        &.is-disabled,
+        &.is-disabled:active,
+        &.is-disabled:focus,
+        &.is-disabled:hover {
+            color: #FFF;
+            background-color: #A0D0FF;
+            border-color: #A0D0FF
+        }
+
+
+    }
+
+    &.plain {
+        background: $plain-color;
+        border-color: rgba(0, 0, 0, 0.15);
+        color: rgba(0, 0, 0, 0.65);
+
+        &:hover {
+            background: #fff;
+            border-color: #1890FF;
+            color: #1890FF;
+        }
+
+        &:focus {
+            color: #1688F2;
+            border-color: #1688F2;
+        }
+
+        &.is-disabled,
+        &.is-disabled:active,
+        &.is-disabled:focus,
+        &.is-disabled:hover {
+            color: rgba(0, 0, 0, 0.25);
+            background-color: rgba(0, 0, 0, 0.04);
+            border-color: rgba(0, 0, 0, 0.15)
+        }
+    }
+
+    &.danger {
+        background: $danger-color;
+        border-color: $danger-color;
+        color: #fff;
+
+        &:hover {
+            background: #EB6E5E;
+            border-color: #EB6E5E;
+        }
+
+        &:focus {
+            background: #ef7b7d;
+            border-color: #ef7b7d;
+        }
+
+        &.is-disabled,
+        &.is-disabled:active,
+        &.is-disabled:focus,
+        &.is-disabled:hover {
+            color: #FFF;
+            background-color: #fab6b6;
+            border-color: #fab6b6
+        }
+    }
+    &.info {
+        background: #ecf5ff;
+        border-color: $light-border-color;
+        color: $light-text-color;
+    }
+    
+    &.text {
+        color: $primary-color;
+        border: none;
+        background-color: transparent;
+        padding-left: 0;
+        padding-right: 0;
+
+        &:hover {
+            color: #30A2FF;
+        }
+
+        &:focus {
+            color: #1688F2;
+        }
+
+        &.is-disabled,
+        &.is-disabled:active,
+        &.is-disabled:focus,
+        &.is-disabled:hover,
+        &.el-button--text:active {
+            color: rgba(0, 0, 0, 0.25);
+            background-color: transparent;
+        }
+    }
+    &.danger-text {
+       color: $danger-color;
+        border: none;
+        background-color: transparent;
+        padding-left: 0;
+        padding-right: 0;
+
+        &:hover {
+            color: #EB6E5E;
+        }
+
+        &:focus {
+            color: #EB6E5E;
+        }
+
+        &.is-disabled,
+        &.is-disabled:active,
+        &.is-disabled:focus,
+        &.is-disabled:hover,
+        &.el-button--text:active {
+            color: #fab6b6;
+            background-color: transparent;
+        }
+    }
+
+
+}
+
+.zhfc-button.el-button {
+    @include zhfc-button-com;
+}
+
+.zhfc-form-btn .el-button {
+    @include zhfc-button-com;
+}

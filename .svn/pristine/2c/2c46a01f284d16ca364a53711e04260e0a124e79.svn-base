@@ -1,0 +1,109 @@
+$table-row-bg: rgba(0, 0, 0, 0.03);
+$td-row:#F7F9FA;
+$td-cell: rgba(0, 0, 0, 0.65);
+$td-active:#EBF5FF;
+
+@mixin zhfc-table {
+    color: $primary-text-color;
+    box-sizing: border-box;
+
+    thead {
+        color: $thead-text-color;
+        font-size: 14px;
+        font-weight: 200px;
+    }
+
+    th {
+        background-color: $table-row-bg;
+        box-sizing: border-box;
+        height: 40px;
+        padding: 0;
+
+        &.is-leaf {
+            border-bottom: 1px solid $table-row-bg;
+        }
+
+        &:not(:last-child)::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            bottom: 9px;
+            width: 1px;
+            height: 20px;
+            background-color: rgba(0, 0, 0, 0.08);
+            z-index: 10;
+        }
+
+        &:first-child .cell {
+            padding-left: 30px;
+        }
+
+        // &:last-child .cell {
+        //     padding-right: 30px;
+        // }
+    }
+    .has-gutter th:nth-last-child(2)::after {
+        display: none !important;
+    }
+    td {
+        height: 50px;
+    }
+
+    tr td .cell,
+    tr th .cell {
+        color: $td-cell;
+        font-size: 14px;
+        padding-left: 24px;
+    }
+
+    tr td:first-child .cell {
+        padding-left: 30px;
+    }
+
+    .el-table__fixed-right-patch {
+        opacity: 0;
+
+    }
+
+    .el-table__fixed-right {
+        right: 8px !important;
+    }
+
+    .el-table__row {
+        // &:nth-child(even) {
+        //     background-color: $td-row;
+        // }
+
+        .cell {
+            .el-dropdown {
+                margin-left: 10px;
+            }
+        }
+    }
+
+    .el-table__body tr.current-row>td {
+        background: $td-active;
+    }
+    .el-table__body tr:hover>td,
+    .el-table__body tr.current-row>td,
+    .el-table__body tr.hover-row.current-row>td,
+    .el-table__body tr.hover-row.el-table__row--striped.current-row>td,
+    .el-table__body tr.hover-row.el-table__row--striped>td,
+    .el-table__body tr.hover-row>td {
+        background-color: #E6F7FF;
+    }
+
+
+}
+
+.zhfc-table {
+    &.el-table {
+        @include zhfc-table;
+    }
+}
+
+.zhfc-table {
+    .el-table {
+        @include zhfc-table;
+    }
+}

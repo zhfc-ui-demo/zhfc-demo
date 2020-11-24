@@ -1,0 +1,28 @@
+@mixin hover {
+    .el-input__inner {
+        padding-left: 12px;
+    }
+    .el-input__inner:hover {
+        border-color: $primary-color
+    }
+    
+    &.is-disabled .el-input__inner:hover {
+        border-color: #E4E7ED
+    }
+    .zhfc-icon-search {
+        display: inline-block;
+        background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAA40lEQVQ4T6XTyUoEUQyF4a+dcFo6ICiCvv8LOSC4cEBwQFFw5kgKyu66Ddp3U4skf05OUiMzvlGjfgGLeMXHtB7jgGVsI98vJP6M64JNsPqAFO3hHrfVOUo2sIZzvI0T+oD96nYzIHmn1Fy0AJn3ACeNmTt1xy3ASsk/mmLqIU7x3s/pRsisgwmVnAa7aCpIXgyMSVcDKpqxvolLBcna7kpqvMkWVgv8MG0LiaVgs9Y2h0884gVbuMTTkAdD4PnaSA4qbx1Z5y9I65Rb1zsB+SugU5JzP8uI/wEE0vnz87PM9L4BoFcuEeFau8gAAAAASUVORK5CYII=) no-repeat center;
+    }
+
+}
+
+.zhfc-input.el-input {
+    @include hover;
+    @include zhfc-input-inner
+
+}
+
+.zhfc-form .el-input {
+    @include hover;
+
+}
