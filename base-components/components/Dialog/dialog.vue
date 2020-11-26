@@ -11,7 +11,6 @@
 // .dialog-footer{
 //     .el-button{width: 100px;}
 // }
-
 </style>
 <template>
   <el-dialog
@@ -19,48 +18,60 @@
     :visible.sync="zhfcVisible"
     @close="$emit('update:visible', false)"
     class="zhfc-dialog-head"
-    :width="width">
-    
+    :width="width"
+    :close-on-click-modal="closeOnClickModal"
+    :destroy-on-close="destroyOnClose"
+  >
     <slot></slot>
 
     <div slot="footer" class="dialog-footer">
       <slot name="footer">
-        <el-button @click="$emit('update:visible', false)"  class="zhfc-button plain">取 消</el-button>
-        <el-button @click="$emit('confirm')"  class="zhfc-button primary">确 定</el-button>
+        <el-button
+          @click="$emit('update:visible', false)"
+          class="zhfc-button plain"
+          >取 消</el-button
+        >
+        <el-button @click="$emit('confirm')" class="zhfc-button primary"
+          >确 定</el-button
+        >
       </slot>
     </div>
-
   </el-dialog>
 </template>
 
 <script>
 export default {
-  name: 'zhfcDialog',
+  name: "zhfcDialog",
   props: {
     visible: Boolean,
     title: String,
     width: {
       type: String,
-      default: '580px'
+      default: "580px",
     },
-    headBg:String,
+    headBg: String,
     show: {
-        type: Boolean,
-        default: false
-    }
+      type: Boolean,
+      default: false,
+    },
+    closeOnClickModal: {
+      type: Boolean,
+      default: true,
+    },
+    destroyOnClose: Boolean
   },
   computed: {
     zhfcVisible: {
       get() {
-        return this.visible
+        return this.visible;
       },
       set(v) {
-        this.$emit('update:visible',v)
-      }
-    }
+        this.$emit("update:visible", v);
+      },
+    },
   },
   mounted() {
     console.log(this.$slots);
-  }
-}
+  },
+};
 </script>

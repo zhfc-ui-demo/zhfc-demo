@@ -56,7 +56,6 @@ export default {
   },
   computed: {
     slotLayout() {
-      
       return `slot, ${this.layout}`;
     },
     currentPage: {
@@ -76,13 +75,13 @@ export default {
       },
     },
     currentLimit() {
-      return (
-        "当前显示" +
+      return "当前显示" +
         ((this.currentPage - 1) * this.pageSize + 1) +
         "-" +
-        this.currentPage * this.pageSize +
-        "，"
-      );
+        this.currentPage * this.pageSize >=
+        this.total
+        ? this.total
+        : this.currentPage * this.pageSize + "，";
     },
   },
   mounted() {

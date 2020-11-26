@@ -4,16 +4,18 @@
     border-radius: 4px;
     overflow-y: auto;
 
+
+    display: flex;
+    flex-direction: column;
+
     .header-section {
-        // padding: 12px 15px;
-        // padding: 30px 30px 0px;
+      
         padding-top: 30px;
         .query-wrap {
             margin-bottom: 24px;
             border-bottom: 1px solid rgba(0, 0, 0, 0.0784313725490196);
             .el-form-item {
-                // margin-right: 20px !important;
-                // margin-bottom: 13px !important;
+        
                 white-space: nowrap;
                 margin-bottom: 24px;
             }
@@ -48,7 +50,17 @@
             }
         }
     }
-
+    .contentStyle {
+        flex: 1;
+        overflow: auto;
+        display: flex;
+        flex-direction: column;
+        .content-wrap {
+            flex: 1 1 0%;
+            overflow: auto;
+         
+        }
+    }
     .content-section {
         height: 100%;
     }

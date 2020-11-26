@@ -17,7 +17,7 @@
           </div>
         </div>
     </div>
-    <div :class="[fixedHead?'srcoll-box':'']">
+    <div :class="['contentStyle',fixedHead?'srcoll-box':'']" >
       <div class="content-wrap" :style="contentStyle">
         <div class="content-section zhfc-table">
           <slot />
@@ -111,9 +111,14 @@ export default {
   methods:{
     // 布局
     layout() {
-      let $container = window.document.querySelector(".main-container");
+      // let $container = window.document.querySelector(".main-container");
+      // let height = $container
+      //   ? $container.clientHeight - 20 * 2 - 70 - 4
+      //   : window.innerHeight - 20;    
+      // this.containerHeight = height;
+            let $container = window.document.querySelector(".single-spa-ve");
       let height = $container
-        ? $container.clientHeight - 20 * 2 - 70 - 4
+        ? $container.clientHeight
         : window.innerHeight - 20;    
       this.containerHeight = height;
       if(this.type==1){//1一屏，2非一屏
