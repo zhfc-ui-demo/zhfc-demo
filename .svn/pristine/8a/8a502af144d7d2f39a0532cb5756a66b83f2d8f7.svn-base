@@ -91,9 +91,9 @@ export default {
       //   : window.innerHeight - 20;
       // this.containerHeight = height;
 
-      let $container = window.document.querySelector(".single-spa-vue");
+          let $container = window.document.querySelector(".single-spa-vue");
       let height = $container
-        ? $container.clientHeight
+        ? $container.clientHeight 
         : window.innerHeight - 20;
       this.containerHeight = height;
 

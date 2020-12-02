@@ -75,13 +75,16 @@ export default {
       },
     },
     currentLimit() {
-      return "当前显示" +
-        ((this.currentPage - 1) * this.pageSize + 1) +
-        "-" +
-        this.currentPage * this.pageSize >=
-        this.total
-        ? this.total
-        : this.currentPage * this.pageSize + "，";
+      let prev = (this.page - 1) * this.limit + 1;
+      let next =
+        this.page * this.limit >= this.total
+          ? this.total
+          : this.page * this.limit;
+          
+      let joint = "当前显示 " + prev + "-" + next + " , ";
+
+  
+      return joint;
     },
   },
   mounted() {

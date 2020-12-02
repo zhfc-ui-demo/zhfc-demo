@@ -1,6 +1,5 @@
 .main-panel-container {
     border: 1px solid $normal-border-color;
-    box-sizing: border-box;
     background-color: #fff;
     border-radius: 4px;
     overflow-y: auto;
